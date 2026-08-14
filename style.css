@@ -4577,13 +4577,12 @@ main {
 
 
 /* ==========================================================
-   58. FOOTER
+   SIMPLE FOOTER
 ========================================================== */
 
 .footer {
     padding:
-        55px 0
-        25px;
+        34px 20px;
 
     background:
         #2f1017;
@@ -4602,124 +4601,97 @@ main {
 
     margin:
         0 auto;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        16px;
 }
 
 
-.footer-brand {
-    display: flex;
-    align-items: center;
+.footer-logo-img {
+    width:
+        42px;
 
-    gap: 18px;
+    height:
+        42px;
+
+    object-fit:
+        contain;
+
+    flex-shrink:
+        0;
 }
 
 
-.footer-logo {
-    width: 55px;
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(
-            183,
-            154,
-            114,
-            0.50
-        );
-
-    border-radius: 50%;
-
-    font-family:
-        var(--serif);
-
-    color:
-        var(--gold-light);
-}
-
-
-.footer-brand strong {
-    display: block;
-
-    font-family:
-        var(--serif);
-
-    font-size: 20px;
-
-    font-weight: 400;
-}
-
-
-.footer-brand small {
-    display: block;
-
-    margin-top: 5px;
-
-    font-size: 7px;
-
-    letter-spacing: 0.25em;
-
-    text-transform: uppercase;
-
-    color:
-        var(--gold-light);
-}
-
-
-.footer-nav {
+.footer p {
     margin:
-        50px 0
-        35px;
+        0;
 
-    display: flex;
+    font-size:
+        10px;
 
-    gap: 30px;
+    line-height:
+        1.5;
 
-    flex-wrap: wrap;
-}
-
-
-.footer-nav a {
-    font-size: 11px;
+    letter-spacing:
+        0.03em;
 
     color:
         rgba(
             255,
             250,
             244,
-            0.70
+            0.58
         );
 }
 
 
-.footer-bottom {
-    padding-top: 23px;
+/* ==========================================================
+   SIMPLE FOOTER - MOBILE
+========================================================== */
 
-    display: flex;
-    justify-content: space-between;
+@media (max-width: 520px) {
 
-    gap: 25px;
+    .footer {
+        padding:
+            28px 20px;
+    }
 
-    border-top:
-        1px solid
-        rgba(
-            255,
-            255,
-            255,
-            0.12
-        );
 
-    font-size: 9px;
+    .footer-container {
+        flex-direction:
+            column;
 
-    color:
-        rgba(
-            255,
-            250,
-            244,
-            0.45
-        );
+        gap:
+            11px;
+
+        text-align:
+            center;
+    }
+
+
+    .footer-logo-img {
+        width:
+            38px;
+
+        height:
+            38px;
+    }
+
+
+    .footer p {
+        font-size:
+            9px;
+    }
+
 }
 
 
