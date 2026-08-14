@@ -125,6 +125,40 @@ const translations = {
       "Имате поинаква замисла? Секогаш можеме да создадеме нешто специјално само за вас.",
 
     contactUs: "Контактирај нè",
+    processEyebrow: "Како функционира",
+
+    processTitleFirst: "Од идеја до",
+
+    processTitleAccent: "ваша покана.",
+
+    processDescription:
+      "Процесот е едноставен. Вие го избирате стилот, а ние се грижиме за деталите.",
+
+    processStepOneTitle: "Одберете дизајн",
+
+    processStepOneText:
+      "Разгледајте ги достапните колекции и одберете го стилот кој најдобро одговара на вашиот настан.",
+
+    processStepTwoTitle: "Испратете ги деталите",
+
+    processStepTwoText:
+      "Ни ги испраќате имињата, датумот, локацијата, текстот и останатите информации за вашиот настан.",
+
+    processStepThreeTitle: "Ние ја персонализираме",
+
+    processStepThreeText:
+      "Поканата ја прилагодуваме со вашите информации, фотографии и избраната визуелна насока.",
+
+    processStepFourTitle: "Споделете ја поканата",
+
+    processStepFourText:
+      "Ја добивате вашата готова дигитална покана преку уникатен линк кој можете лесно да го споделите со гостите.",
+
+    processCtaSmall: "Подготвени сте?",
+
+    processCtaTitle: "Вашата приказна може да започне тука.",
+
+    processCtaButton: "Побарај понуда",
   },
 
   en: {
@@ -222,6 +256,40 @@ const translations = {
       "Have something different in mind? We can always create something special just for you.",
 
     contactUs: "Contact us",
+    processEyebrow: "How it works",
+
+    processTitleFirst: "From an idea to",
+
+    processTitleAccent: "your invitation.",
+
+    processDescription:
+      "The process is simple. You choose the style and we take care of the details.",
+
+    processStepOneTitle: "Choose your design",
+
+    processStepOneText:
+      "Explore the available collections and choose the style that best reflects your event.",
+
+    processStepTwoTitle: "Send us the details",
+
+    processStepTwoText:
+      "Send us the names, date, location, wording and any other information needed for your event.",
+
+    processStepThreeTitle: "We personalize it",
+
+    processStepThreeText:
+      "We customize the invitation with your information, photos and selected visual direction.",
+
+    processStepFourTitle: "Share your invitation",
+
+    processStepFourText:
+      "Receive your completed digital invitation through a unique link that can easily be shared with your guests.",
+
+    processCtaSmall: "Ready?",
+
+    processCtaTitle: "Your story can begin here.",
+
+    processCtaButton: "Request a quote",
   },
 };
 
@@ -513,3 +581,29 @@ const revealObserver = new IntersectionObserver(
 revealElements.forEach((element) => {
   revealObserver.observe(element);
 });
+
+/* ==========================================================
+   16. HOW IT WORKS TIMELINE ANIMATION
+========================================================== */
+
+const processSection = document.querySelector(".process-section");
+
+if (processSection) {
+  const processObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          processSection.classList.add("timeline-visible");
+
+          observer.unobserve(processSection);
+        }
+      });
+    },
+
+    {
+      threshold: 0.25,
+    },
+  );
+
+  processObserver.observe(processSection);
+}

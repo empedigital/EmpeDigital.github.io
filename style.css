@@ -3103,3 +3103,528 @@ main {
     }
 
 }
+/* ==========================================================
+   46. HOW IT WORKS
+========================================================== */
+
+.process-section {
+    padding:
+        135px 0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        var(--cream-light);
+}
+
+
+.process-section::before {
+    content: "04";
+
+    position: absolute;
+
+    right: 3%;
+    top: 30px;
+
+    font-family: var(--serif);
+
+    font-size: 180px;
+    line-height: 1;
+
+    color:
+        rgba(100, 29, 43, 0.025);
+
+    pointer-events: none;
+}
+
+
+.process-container {
+    width:
+        min(
+            90%,
+            var(--container)
+        );
+
+    margin:
+        0 auto;
+}
+
+
+.process-heading {
+    max-width: 800px;
+
+    margin:
+        0 auto
+        90px;
+}
+
+
+/* ==========================================================
+   47. PROCESS TIMELINE
+========================================================== */
+
+.process-timeline {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 28px;
+}
+
+
+/* LINE */
+
+.process-line {
+    height: 1px;
+
+    position: absolute;
+
+    top: 34px;
+
+    left: 12.5%;
+    right: 12.5%;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+    background:
+        rgba(100, 29, 43, 0.13);
+}
+
+
+.process-line-progress {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            var(--burgundy)
+        );
+
+    transition:
+        width
+        1.8s
+        cubic-bezier(
+            0.22,
+            1,
+            0.36,
+            1
+        );
+}
+
+
+.process-section.timeline-visible
+.process-line-progress {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   48. PROCESS STEP
+========================================================== */
+
+.process-step {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+}
+
+
+.process-circle {
+    width: 68px;
+    height: 68px;
+
+    margin:
+        0 auto
+        35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border:
+        1px solid
+        rgba(100, 29, 43, 0.20);
+
+    border-radius: 50%;
+
+    background:
+        var(--cream-light);
+
+    color:
+        var(--burgundy);
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s ease;
+}
+
+
+.process-circle::before {
+    content: "";
+
+    width: 54px;
+    height: 54px;
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(183, 154, 114, 0.35);
+
+    border-radius: 50%;
+}
+
+
+.process-circle span {
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 13px;
+
+    letter-spacing: 0.08em;
+}
+
+
+.process-step:hover
+.process-circle {
+    color: var(--white);
+
+    border-color: var(--burgundy);
+
+    background: var(--burgundy);
+
+    transform:
+        translateY(-5px);
+}
+
+
+.process-step:hover
+.process-circle::before {
+    border-color:
+        rgba(255, 255, 255, 0.30);
+}
+
+
+/* ==========================================================
+   49. PROCESS STEP CONTENT
+========================================================== */
+
+.process-step-content {
+    max-width: 240px;
+
+    margin:
+        0 auto;
+}
+
+
+.process-small {
+    display: block;
+
+    margin-bottom: 15px;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 0.30em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+}
+
+
+.process-step h3 {
+    min-height: 57px;
+
+    font-family: var(--serif);
+
+    font-size: 23px;
+    line-height: 1.2;
+
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.process-step p {
+    margin-top: 16px;
+
+    font-size: 12px;
+    line-height: 1.8;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   50. PROCESS CTA
+========================================================== */
+
+.process-cta {
+    max-width: 1000px;
+
+    margin:
+        90px auto
+        0;
+
+    padding:
+        30px
+        38px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto
+        1fr
+        auto;
+
+    align-items: center;
+
+    gap: 25px;
+
+    border:
+        1px solid
+        rgba(100, 29, 43, 0.12);
+
+    background:
+        linear-gradient(
+            110deg,
+            #f8efe5,
+            #fffaf4
+        );
+
+    box-shadow:
+        0 20px 55px
+        rgba(74, 48, 38, 0.06);
+}
+
+
+.process-cta-icon {
+    width: 53px;
+    height: 53px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(183, 154, 114, 0.35);
+
+    border-radius: 50%;
+
+    font-size: 16px;
+
+    color: var(--gold);
+}
+
+
+.process-cta-text span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.24em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+}
+
+
+.process-cta-text h3 {
+    font-family: var(--serif);
+
+    font-size: 23px;
+    font-weight: 400;
+
+    color: var(--burgundy);
+}
+
+
+/* ==========================================================
+   51. PROCESS TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .process-timeline {
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap:
+            65px
+            35px;
+    }
+
+
+    .process-line {
+        display: none;
+    }
+
+
+    .process-step-content {
+        max-width: 280px;
+    }
+
+
+    .process-cta {
+        grid-template-columns:
+            auto
+            1fr;
+
+        gap: 20px;
+    }
+
+
+    .process-cta .btn {
+        grid-column:
+            1 / -1;
+
+        width: 100%;
+    }
+
+}
+
+
+/* ==========================================================
+   52. PROCESS MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .process-section {
+        padding:
+            95px 0;
+    }
+
+
+    .process-heading {
+        margin-bottom: 55px;
+    }
+
+
+    .process-timeline {
+        display: block;
+    }
+
+
+    .process-step {
+        min-height: 180px;
+
+        padding-left: 82px;
+
+        padding-bottom: 45px;
+
+        text-align: left;
+    }
+
+
+    .process-step:not(:last-child)::after {
+        content: "";
+
+        width: 1px;
+
+        position: absolute;
+
+        left: 29px;
+        top: 62px;
+        bottom: 0;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(183, 154, 114, 0.6),
+                rgba(100, 29, 43, 0.10)
+            );
+    }
+
+
+    .process-circle {
+        width: 58px;
+        height: 58px;
+
+        margin: 0;
+
+        position: absolute;
+
+        left: 0;
+        top: 0;
+    }
+
+
+    .process-circle::before {
+        width: 46px;
+        height: 46px;
+    }
+
+
+    .process-step-content {
+        max-width: none;
+
+        margin: 0;
+    }
+
+
+    .process-step h3 {
+        min-height: auto;
+
+        font-size: 22px;
+    }
+
+
+    .process-step p {
+        max-width: 360px;
+    }
+
+
+    .process-small {
+        margin-bottom: 10px;
+    }
+
+
+    .process-cta {
+        margin-top: 35px;
+
+        padding:
+            27px
+            23px;
+
+        display: flex;
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .process-cta-text h3 {
+        font-size: 21px;
+    }
+
+
+    .process-cta .btn {
+        margin-top: 5px;
+    }
+
+}
