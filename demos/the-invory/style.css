@@ -1,0 +1,2239 @@
+/* ==========================================================
+   THE IVORY — eMPe Studio
+   Digital Wedding Invitation
+   Complete Responsive Stylesheet
+========================================================== */
+
+
+/* ==========================================================
+   01. ROOT
+========================================================== */
+
+:root {
+    --ivory: #fbf7f0;
+    --ivory-soft: #f5ede2;
+    --ivory-deep: #eadfce;
+
+    --burgundy: #651f2f;
+    --burgundy-dark: #45151f;
+    --burgundy-soft: #7f4350;
+
+    --gold: #b89b73;
+    --gold-soft: #d6c3a5;
+
+    --text: #3d302e;
+    --muted: #7a6c68;
+
+    --white: #ffffff;
+
+    --border: rgba(101, 31, 47, 0.13);
+
+    --shadow:
+        0 24px 70px
+        rgba(70, 39, 30, 0.10);
+
+    --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    --sans:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    --container: 1120px;
+}
+
+
+/* ==========================================================
+   02. RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
+    font-family: var(--sans);
+
+    background: var(--ivory);
+    color: var(--text);
+}
+
+
+body.modal-open {
+    overflow: hidden;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ==========================================================
+   03. GLOBAL HELPERS
+========================================================== */
+
+.invite-section {
+    padding: 120px 0;
+
+    position: relative;
+}
+
+
+.section-inner {
+    width: min(90%, var(--container));
+
+    margin: 0 auto;
+}
+
+
+.section-inner.narrow {
+    max-width: 760px;
+
+    text-align: center;
+}
+
+
+.section-number {
+    display: inline-block;
+
+    margin-bottom: 18px;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.24em;
+
+    color: var(--gold);
+}
+
+
+.small-label {
+    margin-bottom: 18px;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.30em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+}
+
+
+.small-label.light {
+    color: var(--gold-soft);
+}
+
+
+.section-heading {
+    margin-bottom: 60px;
+}
+
+
+.section-heading.centered {
+    text-align: center;
+}
+
+
+.section-heading h2,
+.invite-section h2 {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            68px
+        );
+
+    line-height: 1.04;
+
+    font-weight: 400;
+
+    letter-spacing: -0.025em;
+
+    color: var(--burgundy-dark);
+}
+
+
+.section-text {
+    max-width: 650px;
+
+    margin:
+        28px auto
+        0;
+
+    font-size: 15px;
+    line-height: 1.9;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   04. LANGUAGE SWITCHER
+========================================================== */
+
+.invite-language {
+    position: fixed;
+
+    top: 24px;
+    right: 28px;
+
+    z-index: 1200;
+
+    padding:
+        9px
+        13px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    border:
+        1px solid
+        rgba(101, 31, 47, 0.10);
+
+    background:
+        rgba(251, 247, 240, 0.85);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(70, 39, 30, 0.06);
+}
+
+
+.invite-language > span {
+    font-family: var(--serif);
+
+    color:
+        rgba(184, 155, 115, 0.70);
+}
+
+
+.invite-lang-btn {
+    position: relative;
+
+    padding: 3px 1px;
+
+    border: 0;
+
+    background: transparent;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+
+    color: var(--muted);
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.invite-lang-btn::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -4px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--burgundy);
+
+    transform: translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.invite-lang-btn:hover,
+.invite-lang-btn.active {
+    color: var(--burgundy);
+}
+
+
+.invite-lang-btn.active::after {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   05. HERO
+========================================================== */
+
+.invite-hero {
+    min-height: 100svh;
+
+    padding:
+        100px
+        20px
+        70px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9 0%,
+            #f7efe4 60%,
+            #eee1cf 100%
+        );
+}
+
+
+.invite-hero::before {
+    content: "";
+
+    width: calc(100% - 42px);
+    height: calc(100% - 42px);
+
+    position: absolute;
+
+    top: 21px;
+    left: 21px;
+
+    border:
+        1px solid
+        rgba(184, 155, 115, 0.26);
+
+    pointer-events: none;
+}
+
+
+.invite-hero::after {
+    content: "THE IVORY";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    font-size: 6px;
+    font-weight: 600;
+
+    letter-spacing: 0.45em;
+
+    color:
+        rgba(101, 31, 47, 0.36);
+}
+
+
+.invite-hero-content {
+    width: min(92%, 760px);
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+.invite-eyebrow {
+    margin-bottom: 34px;
+
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.36em;
+
+    color: var(--coffee, #8d7565);
+}
+
+
+.couple-names {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            64px,
+            9vw,
+            112px
+        );
+
+    line-height: 0.88;
+
+    font-weight: 400;
+
+    letter-spacing: -0.045em;
+
+    color: var(--burgundy-dark);
+}
+
+
+.couple-names span {
+    display: block;
+}
+
+
+.couple-names em {
+    margin:
+        11px 0;
+
+    font-size: 0.42em;
+    font-weight: 400;
+    font-style: italic;
+
+    color: var(--gold);
+}
+
+
+.invite-divider {
+    width: min(250px, 65%);
+
+    margin:
+        40px auto
+        23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    color: var(--gold);
+}
+
+
+.invite-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(184, 155, 115, 0.45);
+}
+
+
+.invite-divider i {
+    font-style: normal;
+
+    font-size: 11px;
+}
+
+
+.invite-date {
+    font-family: var(--serif);
+
+    font-size: 18px;
+
+    letter-spacing: 0.14em;
+
+    color: var(--burgundy);
+}
+
+
+.invite-location {
+    margin-top: 10px;
+
+    font-size: 9px;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: var(--muted);
+}
+
+
+.scroll-down {
+    margin-top: 55px;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 0.24em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.scroll-down:hover {
+    color: var(--burgundy);
+}
+
+
+.scroll-arrow {
+    font-size: 18px;
+
+    animation:
+        arrowMove
+        1.7s ease-in-out
+        infinite;
+}
+
+
+.invite-hero-decoration {
+    position: absolute;
+
+    z-index: 1;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            140px,
+            18vw,
+            300px
+        );
+
+    color:
+        rgba(184, 155, 115, 0.11);
+
+    pointer-events: none;
+}
+
+
+.invite-decoration-one {
+    left: -60px;
+    bottom: -20px;
+
+    transform: rotate(-22deg);
+}
+
+
+.invite-decoration-two {
+    right: -50px;
+    top: -30px;
+
+    transform: rotate(155deg);
+}
+
+
+/* ==========================================================
+   06. INTRO
+========================================================== */
+
+.intro-section {
+    background: var(--ivory);
+}
+
+
+.intro-section::before {
+    content: "✦";
+
+    position: absolute;
+
+    left: 6%;
+    top: 50%;
+
+    font-family: var(--serif);
+
+    font-size: 17px;
+
+    color:
+        rgba(184, 155, 115, 0.45);
+}
+
+
+.intro-section h2 {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+
+/* ==========================================================
+   07. DETAILS
+========================================================== */
+
+.details-section {
+    background: var(--ivory-soft);
+}
+
+
+.details-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.detail-card {
+    min-height: 300px;
+
+    padding:
+        35px
+        28px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(101, 31, 47, 0.12);
+
+    background:
+        rgba(255, 255, 255, 0.38);
+
+    transition:
+        transform 0.4s ease,
+        background 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+
+.detail-card:hover {
+    transform: translateY(-7px);
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    box-shadow:
+        0 22px 55px
+        rgba(70, 39, 30, 0.07);
+}
+
+
+.detail-icon {
+    margin-bottom: 35px;
+
+    font-family: var(--serif);
+
+    font-size: 30px;
+
+    color: var(--gold);
+}
+
+
+.detail-card small {
+    margin-bottom: 15px;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 0.28em;
+
+    color: var(--gold);
+}
+
+
+.detail-card h3 {
+    font-family: var(--serif);
+
+    font-size: 25px;
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.detail-card p {
+    margin-top: 10px;
+
+    font-size: 11px;
+    line-height: 1.6;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   08. COUNTDOWN
+========================================================== */
+
+.countdown-section {
+    padding:
+        110px
+        0;
+
+    position: relative;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+        var(--burgundy-dark);
+
+    color: var(--ivory);
+}
+
+
+.countdown-section::before {
+    content: "✦";
+
+    position: absolute;
+
+    top: 32px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-size: 13px;
+
+    color: var(--gold);
+}
+
+
+.countdown-heading {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            40px,
+            5vw,
+            63px
+        );
+
+    font-weight: 400;
+
+    color: var(--ivory);
+}
+
+
+.countdown {
+    margin-top: 55px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    gap: 22px;
+}
+
+
+.countdown-item {
+    min-width: 105px;
+}
+
+
+.countdown-item strong {
+    display: block;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            46px,
+            6vw,
+            72px
+        );
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    color: var(--gold-soft);
+}
+
+
+.countdown-item span {
+    display: block;
+
+    margin-top: 12px;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 0.20em;
+
+    text-transform: uppercase;
+
+    color:
+        rgba(251, 247, 240, 0.55);
+}
+
+
+.countdown-divider {
+    padding-top: 10px;
+
+    font-family: var(--serif);
+
+    font-size: 34px;
+
+    color:
+        rgba(214, 195, 165, 0.42);
+}
+
+
+/* ==========================================================
+   09. SCHEDULE
+========================================================== */
+
+.schedule-section {
+    background: var(--ivory);
+}
+
+
+.schedule-list {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    position: relative;
+}
+
+
+.schedule-list::before {
+    content: "";
+
+    width: 1px;
+
+    position: absolute;
+
+    left: 145px;
+    top: 15px;
+    bottom: 15px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(184, 155, 115, 0.55),
+            transparent
+        );
+}
+
+
+.schedule-item {
+    min-height: 145px;
+
+    display: grid;
+
+    grid-template-columns:
+        110px
+        30px
+        1fr;
+
+    align-items: start;
+
+    gap: 20px;
+
+    position: relative;
+
+    padding:
+        25px 0;
+}
+
+
+.schedule-time {
+    padding-top: 3px;
+
+    font-family: var(--serif);
+
+    font-size: 19px;
+
+    color: var(--burgundy);
+}
+
+
+.schedule-dot {
+    width: 11px;
+    height: 11px;
+
+    margin:
+        4px auto
+        0;
+
+    position: relative;
+
+    z-index: 2;
+
+    border:
+        3px solid
+        var(--ivory);
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(184, 155, 115, 0.55);
+}
+
+
+.schedule-item h3 {
+    font-family: var(--serif);
+
+    font-size: 24px;
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.schedule-item p {
+    margin-top: 8px;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   10. LOCATION
+========================================================== */
+
+.location-section {
+    min-height: 580px;
+
+    display: grid;
+
+    grid-template-columns:
+        0.9fr
+        1.1fr;
+
+    background: var(--ivory-soft);
+}
+
+
+.location-content {
+    padding:
+        80px
+        max(6vw, 45px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.location-content h2 {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            43px,
+            5vw,
+            70px
+        );
+
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.location-content > p:not(.small-label) {
+    margin-top: 14px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+.invite-button {
+    width: fit-content;
+
+    min-height: 50px;
+
+    margin-top: 32px;
+
+    padding:
+        0
+        24px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        var(--burgundy);
+
+    background: var(--burgundy);
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.08em;
+
+    color: var(--white);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.invite-button:hover {
+    transform: translateY(-3px);
+
+    background: var(--burgundy-dark);
+
+    box-shadow:
+        0 15px 30px
+        rgba(101, 31, 47, 0.14);
+}
+
+
+.location-visual {
+    min-height: 580px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #e7d9c7,
+            #d9c7ae
+        );
+}
+
+
+.location-visual::before,
+.location-visual::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(101, 31, 47, 0.11);
+}
+
+
+.location-visual::before {
+    width: 420px;
+    height: 420px;
+}
+
+
+.location-visual::after {
+    width: 260px;
+    height: 260px;
+}
+
+
+.location-visual span {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 55px;
+
+    color: var(--burgundy);
+}
+
+
+.location-visual p {
+    margin-top: 18px;
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 25px;
+
+    color: var(--burgundy-dark);
+}
+
+
+/* ==========================================================
+   11. DRESS CODE
+========================================================== */
+
+.dresscode-section {
+    text-align: center;
+
+    background: var(--ivory);
+}
+
+
+.dress-colors {
+    margin-top: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+}
+
+
+.dress-colors span {
+    width: 44px;
+    height: 44px;
+
+    border-radius: 50%;
+
+    border:
+        4px solid
+        var(--ivory);
+
+    box-shadow:
+        0 0 0 1px
+        rgba(101, 31, 47, 0.09);
+}
+
+
+.dress-colors span:nth-child(1) {
+    background: #eee4d7;
+}
+
+
+.dress-colors span:nth-child(2) {
+    background: #d4c3ad;
+}
+
+
+.dress-colors span:nth-child(3) {
+    background: #aa9380;
+}
+
+
+.dress-colors span:nth-child(4) {
+    background: #7b5d54;
+}
+
+
+/* ==========================================================
+   12. GALLERY
+========================================================== */
+
+.gallery-section {
+    background: var(--ivory-soft);
+}
+
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.15fr
+        0.85fr;
+
+    grid-template-rows:
+        repeat(2, 250px);
+
+    gap: 18px;
+}
+
+
+.gallery-placeholder {
+    position: relative;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    padding: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ded0bf,
+            #c8b39b
+        );
+}
+
+
+.gallery-placeholder::before {
+    content: "";
+
+    width: 190px;
+    height: 190px;
+
+    position: absolute;
+
+    right: -55px;
+    top: -45px;
+
+    border-radius: 50%;
+
+    border:
+        1px solid
+        rgba(101, 31, 47, 0.13);
+}
+
+
+.gallery-placeholder span {
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 15px;
+
+    color:
+        rgba(69, 21, 31, 0.64);
+}
+
+
+.gallery-tall {
+    grid-row:
+        1 / 3;
+
+    background:
+        linear-gradient(
+            145deg,
+            #cdb9a1,
+            #ab9278
+        );
+}
+
+
+/* ==========================================================
+   13. RSVP
+========================================================== */
+
+.rsvp-section {
+    min-height: 650px;
+
+    padding:
+        110px
+        20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        var(--burgundy-dark);
+
+    color: var(--ivory);
+}
+
+
+.rsvp-section::before {
+    content: "";
+
+    width: 520px;
+    height: 520px;
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(214, 195, 165, 0.11);
+
+    border-radius: 50%;
+}
+
+
+.rsvp-section::after {
+    content: "";
+
+    width: 360px;
+    height: 360px;
+
+    position: absolute;
+
+    border:
+        1px solid
+        rgba(214, 195, 165, 0.10);
+
+    border-radius: 50%;
+}
+
+
+.rsvp-inner {
+    width: min(90%, 720px);
+
+    position: relative;
+
+    z-index: 3;
+}
+
+
+.rsvp-star {
+    display: block;
+
+    margin-bottom: 24px;
+
+    font-size: 16px;
+
+    color: var(--gold);
+}
+
+
+.rsvp-inner h2 {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            44px,
+            6vw,
+            72px
+        );
+
+    line-height: 1.05;
+
+    font-weight: 400;
+
+    color: var(--ivory);
+}
+
+
+.rsvp-inner > p:not(.small-label) {
+    max-width: 540px;
+
+    margin:
+        28px auto
+        0;
+
+    font-size: 14px;
+    line-height: 1.8;
+
+    color:
+        rgba(251, 247, 240, 0.64);
+}
+
+
+.rsvp-button {
+    min-height: 52px;
+
+    margin-top: 38px;
+
+    padding:
+        0
+        28px;
+
+    border:
+        1px solid
+        var(--gold-soft);
+
+    background:
+        transparent;
+
+    font-size: 9px;
+    font-weight: 600;
+
+    letter-spacing: 0.10em;
+
+    color: var(--gold-soft);
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.rsvp-button:hover {
+    transform: translateY(-3px);
+
+    background: var(--gold-soft);
+
+    color: var(--burgundy-dark);
+}
+
+
+/* ==========================================================
+   14. RSVP MODAL
+========================================================== */
+
+.rsvp-modal {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 2000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+
+.rsvp-modal.open {
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.rsvp-modal-backdrop {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(31, 17, 18, 0.70);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+
+.rsvp-modal-card {
+    width: min(100%, 560px);
+
+    max-height: calc(100svh - 40px);
+
+    overflow-y: auto;
+
+    padding:
+        45px
+        42px;
+
+    position: relative;
+
+    z-index: 2;
+
+    background: var(--ivory);
+
+    box-shadow:
+        0 35px 100px
+        rgba(0, 0, 0, 0.26);
+
+    transform: translateY(22px);
+
+    transition:
+        transform 0.35s ease;
+}
+
+
+.rsvp-modal.open
+.rsvp-modal-card {
+    transform: translateY(0);
+}
+
+
+.rsvp-close {
+    width: 42px;
+    height: 42px;
+
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    border: 0;
+
+    background: transparent;
+
+    font-family: var(--serif);
+
+    font-size: 29px;
+
+    color: var(--burgundy);
+}
+
+
+.modal-star {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 13px;
+
+    text-align: center;
+
+    color: var(--gold);
+}
+
+
+.rsvp-modal-card > h2 {
+    text-align: center;
+
+    font-family: var(--serif);
+
+    font-size: 36px;
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.rsvp-modal-card > p {
+    margin-top: 10px;
+
+    text-align: center;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+.rsvp-form {
+    margin-top: 33px;
+
+    display: grid;
+
+    gap: 21px;
+}
+
+
+.rsvp-form label {
+    display: grid;
+
+    gap: 9px;
+}
+
+
+.rsvp-form label > span {
+    font-size: 8px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: var(--coffee, #8d7565);
+}
+
+
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    width: 100%;
+
+    border: 0;
+    border-bottom:
+        1px solid
+        rgba(101, 31, 47, 0.22);
+
+    border-radius: 0;
+
+    outline: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    transition:
+        border-color 0.3s ease;
+}
+
+
+.rsvp-form input,
+.rsvp-form select {
+    min-height: 45px;
+}
+
+
+.rsvp-form textarea {
+    min-height: 95px;
+
+    padding-top: 10px;
+
+    resize: vertical;
+}
+
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+    border-color: var(--burgundy);
+}
+
+
+.form-submit {
+    width: 100%;
+
+    margin-top: 6px;
+}
+
+
+.rsvp-success {
+    display: none;
+
+    padding:
+        45px 15px
+        15px;
+
+    text-align: center;
+}
+
+
+.rsvp-success.visible {
+    display: block;
+}
+
+
+.rsvp-success > span {
+    width: 50px;
+    height: 50px;
+
+    margin:
+        0 auto
+        20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(101, 31, 47, 0.17);
+
+    border-radius: 50%;
+
+    color: var(--burgundy);
+}
+
+
+.rsvp-success h3 {
+    font-family: var(--serif);
+
+    font-size: 30px;
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.rsvp-success p {
+    margin-top: 10px;
+
+    font-size: 12px;
+    line-height: 1.7;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   15. ENDING
+========================================================== */
+
+.ending-section {
+    min-height: 520px;
+
+    padding:
+        100px
+        20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fffdf9,
+            #f2e7d8
+        );
+}
+
+
+.ending-section p {
+    margin-bottom: 22px;
+
+    font-size: 7px;
+    font-weight: 600;
+
+    letter-spacing: 0.34em;
+
+    color: var(--gold);
+}
+
+
+.ending-section h2 {
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            52px,
+            7vw,
+            88px
+        );
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    color: var(--burgundy-dark);
+}
+
+
+.ending-section span {
+    margin-top: 24px;
+
+    font-family: var(--serif);
+
+    font-size: 14px;
+
+    letter-spacing: 0.10em;
+
+    color: var(--burgundy);
+}
+
+
+/* ==========================================================
+   16. FOOTER
+========================================================== */
+
+.invite-footer {
+    padding:
+        25px
+        20px;
+
+    text-align: center;
+
+    background: #321019;
+
+    color:
+        rgba(251, 247, 240, 0.52);
+}
+
+
+.invite-footer p {
+    font-size: 8px;
+
+    letter-spacing: 0.07em;
+}
+
+
+.invite-footer strong {
+    font-family: var(--serif);
+
+    font-size: 11px;
+    font-weight: 400;
+
+    color: var(--gold-soft);
+}
+
+
+/* ==========================================================
+   17. KEYFRAMES
+========================================================== */
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(7px);
+    }
+}
+
+
+/* ==========================================================
+   18. TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .invite-section {
+        padding:
+            95px 0;
+    }
+
+
+    .details-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .detail-card {
+        min-height: 230px;
+    }
+
+
+    .location-section {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .location-content {
+        min-height: 430px;
+
+        text-align: center;
+
+        align-items: center;
+    }
+
+
+    .location-visual {
+        min-height: 430px;
+    }
+
+
+    .gallery-grid {
+        grid-template-columns:
+            1fr
+            1fr;
+
+        grid-template-rows:
+            400px
+            260px;
+    }
+
+
+    .gallery-tall {
+        grid-column:
+            1 / 3;
+
+        grid-row:
+            auto;
+    }
+
+}
+
+
+/* ==========================================================
+   19. MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .invite-language {
+        top: 14px;
+        right: 14px;
+
+        padding:
+            8px
+            11px;
+    }
+
+
+    .invite-hero {
+        min-height: 100svh;
+
+        padding:
+            90px
+            18px
+            60px;
+    }
+
+
+    .invite-hero::before {
+        width: calc(100% - 24px);
+        height: calc(100% - 24px);
+
+        top: 12px;
+        left: 12px;
+    }
+
+
+    .invite-eyebrow {
+        margin-bottom: 28px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.27em;
+    }
+
+
+    .couple-names {
+        font-size:
+            clamp(
+                52px,
+                17vw,
+                76px
+            );
+    }
+
+
+    .invite-divider {
+        margin-top: 32px;
+    }
+
+
+    .scroll-down {
+        margin-top: 42px;
+    }
+
+
+    .invite-section {
+        padding:
+            80px 0;
+    }
+
+
+    .section-heading {
+        margin-bottom: 42px;
+    }
+
+
+    .section-heading h2,
+    .invite-section h2 {
+        font-size: 39px;
+    }
+
+
+    .section-text {
+        font-size: 13px;
+
+        line-height: 1.8;
+    }
+
+
+    .countdown-section {
+        padding:
+            85px 0;
+    }
+
+
+    .countdown {
+        gap: 8px;
+
+        margin-top: 42px;
+    }
+
+
+    .countdown-item {
+        min-width: 58px;
+    }
+
+
+    .countdown-item strong {
+        font-size: 37px;
+    }
+
+
+    .countdown-item span {
+        font-size: 6px;
+
+        letter-spacing: 0.09em;
+    }
+
+
+    .countdown-divider {
+        padding-top: 5px;
+
+        font-size: 24px;
+    }
+
+
+    .schedule-list::before {
+        left: 62px;
+    }
+
+
+    .schedule-item {
+        min-height: 135px;
+
+        grid-template-columns:
+            48px
+            12px
+            1fr;
+
+        gap: 14px;
+    }
+
+
+    .schedule-time {
+        font-size: 15px;
+    }
+
+
+    .schedule-dot {
+        width: 9px;
+        height: 9px;
+    }
+
+
+    .schedule-item h3 {
+        font-size: 20px;
+    }
+
+
+    .schedule-item p {
+        font-size: 11px;
+    }
+
+
+    .location-content {
+        min-height: 390px;
+
+        padding:
+            65px
+            25px;
+    }
+
+
+    .location-visual {
+        min-height: 330px;
+    }
+
+
+    .location-visual::before {
+        width: 290px;
+        height: 290px;
+    }
+
+
+    .location-visual::after {
+        width: 185px;
+        height: 185px;
+    }
+
+
+    .dress-colors span {
+        width: 37px;
+        height: 37px;
+    }
+
+
+    .gallery-grid {
+        display: grid;
+
+        grid-template-columns:
+            1fr;
+
+        grid-template-rows:
+            360px
+            230px
+            230px;
+    }
+
+
+    .gallery-tall {
+        grid-column:
+            auto;
+
+        grid-row:
+            auto;
+    }
+
+
+    .rsvp-section {
+        min-height: 580px;
+
+        padding:
+            85px
+            20px;
+    }
+
+
+    .rsvp-section::before {
+        width: 380px;
+        height: 380px;
+    }
+
+
+    .rsvp-section::after {
+        width: 250px;
+        height: 250px;
+    }
+
+
+    .rsvp-inner h2 {
+        font-size: 42px;
+    }
+
+
+    .rsvp-modal {
+        padding: 12px;
+    }
+
+
+    .rsvp-modal-card {
+        max-height:
+            calc(100svh - 24px);
+
+        padding:
+            42px
+            24px
+            28px;
+    }
+
+
+    .rsvp-modal-card > h2 {
+        font-size: 30px;
+    }
+
+
+    .ending-section {
+        min-height: 430px;
+
+        padding:
+            80px
+            20px;
+    }
+
+
+    .ending-section h2 {
+        font-size: 50px;
+    }
+
+}
+
+
+/* ==========================================================
+   20. VERY SMALL MOBILE
+========================================================== */
+
+@media (max-width: 380px) {
+
+    .couple-names {
+        font-size: 49px;
+    }
+
+
+    .invite-date {
+        font-size: 15px;
+    }
+
+
+    .countdown {
+        gap: 4px;
+    }
+
+
+    .countdown-item {
+        min-width: 51px;
+    }
+
+
+    .countdown-item strong {
+        font-size: 32px;
+    }
+
+
+    .schedule-list::before {
+        left: 57px;
+    }
+
+
+    .schedule-item {
+        grid-template-columns:
+            43px
+            10px
+            1fr;
+
+        gap: 12px;
+    }
+
+}
+
+
+/* ==========================================================
+   21. REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+
+}
