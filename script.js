@@ -1,8 +1,24 @@
 /* ==========================================================
    eMPe STUDIO
    MAIN JAVASCRIPT
-   Header + Mobile Menu + Language Switcher
+   COMPLETE VERSION
+
+   Includes:
+   - Header scroll effect
+   - Mobile hamburger menu
+   - MK / EN language switcher
+   - localStorage language memory
+   - SEO title + description translation
+   - Active navigation on scroll
+   - Smooth scrolling
+   - Hero demo button
+   - Scroll reveal animations
+   - How It Works timeline animation
+   - Collection demo buttons
+   - FAQ accordion
+   - Current year
 ========================================================== */
+
 
 /* ==========================================================
    01. ELEMENTS
@@ -16,594 +32,1786 @@ const mobileLinks = document.querySelectorAll(".mobile-nav a");
 const languageButtons = document.querySelectorAll(".lang-btn");
 const translatableElements = document.querySelectorAll("[data-i18n]");
 
+const sections = document.querySelectorAll("main section[id]");
+const desktopNavLinks = document.querySelectorAll(".desktop-nav .nav-link");
+
+
 /* ==========================================================
    02. TRANSLATIONS
-
-   Zasega gi stavame samo tekstovite sto vekje gi imame:
-   - navigation
-   - hero
-   - mobile language label
-
-   Koga ke zavrsime nova sekcija, samo ke dodavame novi keys
-   vo MK i EN objektite.
 ========================================================== */
 
 const translations = {
-  mk: {
-    /* Navigation */
-    navHome: "Почетна",
-    navAbout: "За нас",
-    navInvitations: "Покани",
-    navHow: "Како функционира",
-    navPackages: "Пакети",
-    navFaq: "ЧПП",
-    navContact: "Контакт",
 
-    /* Mobile menu */
-    languageLabel: "Јазик",
+    /* ======================================================
+       MACEDONIAN
+    ====================================================== */
 
-    /* Hero */
-    heroEyebrow: "Покани кои остануваат во спомен",
-    heroTitleFirst: "Дигитални",
-    heroTitleAccent: "покани",
-    heroTitleLast: "со стил.",
+    mk: {
 
-    heroDescription:
-      "Создаваме персонализирани дигитални покани за вашите најубави моменти — со внимание, елеганција и чувство за секој детал.",
+        /* ---------------- NAVIGATION ---------------- */
 
-    heroViewInvitations: "Разгледај покани",
-    heroRequestOffer: "Побарај понуда",
+        navHome: "Почетна",
+        navAbout: "За нас",
+        navInvitations: "Покани",
+        navHow: "Како функционира",
+        navPackages: "Пакети",
+        navFaq: "ЧПП",
+        navContact: "Контакт",
 
-    heroNote: "Персонализирано. Дигитално. Создадено за вас.",
+        languageLabel: "Јазик",
 
-    /* Demo invitation */
-    inviteYou: "ВЕ ПОКАНУВАМЕ",
-    inviteLocation: "Скопје",
-    openInvitation: "Отвори покана",
 
-    /* Floating cards */
-    floatingPersonalized: "Персонализирано",
-    floatingPersonalizedSmall: "само за вашиот момент",
-    floatingDigitalSmall: "лесно за споделување",
+        /* ---------------- HERO ---------------- */
 
-    aboutEyebrow: "За eMPe Studio",
-    aboutTitleFirst: "Повеќе од",
-    aboutTitleAccent: "покана.",
+        heroEyebrow:
+            "Покани кои остануваат во спомен",
 
-    aboutLead:
-      "Веруваме дека секој посебен момент заслужува да започне на посебен начин.",
+        heroTitleFirst:
+            "Дигитални",
 
-    aboutDescription:
-      "eMPe Studio создава персонализирани дигитални покани кои ги спојуваат елеганцијата, деталите и современото дигитално искуство.",
+        heroTitleAccent:
+            "покани",
 
-    aboutDescriptionTwo:
-      "Секоја покана е создадена за да ја пренесе атмосферата на вашиот настан и лесно да стигне до луѓето со кои сакате да го споделите.",
+        heroTitleLast:
+            "со стил.",
 
-    aboutFloating: "Создадено со чувство за детали.",
+        heroDescription:
+            "Создаваме персонализирани дигитални покани за вашите најубави моменти — со внимание, елеганција и чувство за секој детал.",
 
-    aboutValueOneTitle: "Лично",
-    aboutValueOneText: "Дизајн создаден според вашиот момент.",
+        heroViewInvitations:
+            "Разгледај покани",
 
-    aboutValueTwoTitle: "Елегантно",
-    aboutValueTwoText: "Внимание до секој визуелен детал.",
+        heroRequestOffer:
+            "Побарај понуда",
 
-    aboutValueThreeTitle: "Дигитално",
-    aboutValueThreeText: "Современо и едноставно за споделување.",
+        heroNote:
+            "Персонализирано. Дигитално. Создадено за вас.",
 
-    invitationsEyebrow: "Нашите покани",
+        inviteYou:
+            "ВЕ ПОКАНУВАМЕ",
 
-    invitationsTitleFirst: "Дизајн за секој",
+        inviteLocation:
+            "Скопје",
 
-    invitationsTitleAccent: "посебен момент.",
+        openInvitation:
+            "Отвори покана",
 
-    invitationsDescription:
-      "Одберете го стилот што најдобро ја раскажува вашата приказна. Секој дизајн може да биде персонализиран според вашиот настан.",
+        floatingPersonalized:
+            "Персонализирано",
 
-    weddingTitle: "Свадбени покани",
+        floatingPersonalizedSmall:
+            "само за вашиот момент",
 
-    weddingDescription:
-      "Елегантни дигитални покани создадени за денот кој сакате да го паметите засекогаш.",
+        floatingDigitalSmall:
+            "лесно за споделување",
 
-    birthdayTitle: "Роденденски покани",
 
-    birthdayDescription:
-      "Модерни и персонализирани покани за прослави кои заслужуваат посебен почеток.",
+        /* ---------------- ABOUT ---------------- */
 
-    christeningTitle: "Крштевање",
+        aboutEyebrow:
+            "За eMPe Studio",
 
-    christeningDescription:
-      "Нежни и внимателно дизајнирани покани за еден од најубавите семејни моменти.",
+        aboutTitleFirst:
+            "Повеќе од",
 
-    specialTitle: "Посебни настани",
+        aboutTitleAccent:
+            "покана.",
 
-    specialDescription:
-      "Веридби, годишнини, прослави и моменти кои сакате да ги најавите на поинаков начин.",
+        aboutLead:
+            "Веруваме дека секој посебен момент заслужува да започне на посебен начин.",
 
-    viewCollection: "Разгледај колекција",
+        aboutDescription:
+            "eMPe Studio создава персонализирани дигитални покани кои ги спојуваат елеганцијата, деталите и современото дигитално искуство.",
 
-    customInvitationText:
-      "Имате поинаква замисла? Секогаш можеме да создадеме нешто специјално само за вас.",
+        aboutDescriptionTwo:
+            "Секоја покана е создадена за да ја пренесе атмосферата на вашиот настан и лесно да стигне до луѓето со кои сакате да го споделите.",
 
-    contactUs: "Контактирај нè",
-    processEyebrow: "Како функционира",
+        aboutFloating:
+            "Создадено со чувство за детали.",
 
-    processTitleFirst: "Од идеја до",
+        aboutValueOneTitle:
+            "Лично",
 
-    processTitleAccent: "ваша покана.",
+        aboutValueOneText:
+            "Дизајн создаден според вашиот момент.",
 
-    processDescription:
-      "Процесот е едноставен. Вие го избирате стилот, а ние се грижиме за деталите.",
+        aboutValueTwoTitle:
+            "Елегантно",
 
-    processStepOneTitle: "Одберете дизајн",
+        aboutValueTwoText:
+            "Внимание до секој визуелен детал.",
 
-    processStepOneText:
-      "Разгледајте ги достапните колекции и одберете го стилот кој најдобро одговара на вашиот настан.",
+        aboutValueThreeTitle:
+            "Дигитално",
 
-    processStepTwoTitle: "Испратете ги деталите",
+        aboutValueThreeText:
+            "Современо и едноставно за споделување.",
 
-    processStepTwoText:
-      "Ни ги испраќате имињата, датумот, локацијата, текстот и останатите информации за вашиот настан.",
 
-    processStepThreeTitle: "Ние ја персонализираме",
+        /* ---------------- INVITATIONS ---------------- */
 
-    processStepThreeText:
-      "Поканата ја прилагодуваме со вашите информации, фотографии и избраната визуелна насока.",
+        invitationsEyebrow:
+            "Нашите покани",
 
-    processStepFourTitle: "Споделете ја поканата",
+        invitationsTitleFirst:
+            "Дизајн за секој",
 
-    processStepFourText:
-      "Ја добивате вашата готова дигитална покана преку уникатен линк кој можете лесно да го споделите со гостите.",
+        invitationsTitleAccent:
+            "посебен момент.",
 
-    processCtaSmall: "Подготвени сте?",
+        invitationsDescription:
+            "Одберете го стилот што најдобро ја раскажува вашата приказна. Секој дизајн може да биде персонализиран според вашиот настан.",
 
-    processCtaTitle: "Вашата приказна може да започне тука.",
+        weddingTitle:
+            "Свадбени покани",
 
-    processCtaButton: "Побарај понуда",
-  },
+        weddingDescription:
+            "Елегантни дигитални покани создадени за денот кој сакате да го паметите засекогаш.",
 
-  en: {
-    /* Navigation */
-    navHome: "Home",
-    navAbout: "About",
-    navInvitations: "Invitations",
-    navHow: "How it works",
-    navPackages: "Packages",
-    navFaq: "FAQ",
-    navContact: "Contact",
+        birthdayTitle:
+            "Роденденски покани",
 
-    /* Mobile menu */
-    languageLabel: "Language",
+        birthdayDescription:
+            "Модерни и персонализирани покани за прослави кои заслужуваат посебен почеток.",
 
-    /* Hero */
-    heroEyebrow: "Invitations made to be remembered",
-    heroTitleFirst: "Digital",
-    heroTitleAccent: "invitations",
-    heroTitleLast: "with style.",
+        christeningTitle:
+            "Крштевање",
 
-    heroDescription:
-      "We create personalized digital invitations for your most special moments — designed with care, elegance and attention to every detail.",
+        christeningDescription:
+            "Нежни и внимателно дизајнирани покани за еден од најубавите семејни моменти.",
 
-    heroViewInvitations: "Explore invitations",
-    heroRequestOffer: "Request a quote",
+        specialTitle:
+            "Посебни настани",
 
-    heroNote: "Personalized. Digital. Made for you.",
+        specialDescription:
+            "Веридби, годишнини, прослави и моменти кои сакате да ги најавите на поинаков начин.",
 
-    /* Demo invitation */
-    inviteYou: "YOU ARE INVITED",
-    inviteLocation: "Skopje",
-    openInvitation: "Open invitation",
+        viewCollection:
+            "Разгледај колекција",
 
-    /* Floating cards */
-    floatingPersonalized: "Personalized",
-    floatingPersonalizedSmall: "made for your special moment",
-    floatingDigitalSmall: "easy to share",
+        customInvitationText:
+            "Имате поинаква замисла? Секогаш можеме да создадеме нешто специјално само за вас.",
 
-    aboutEyebrow: "About eMPe Studio",
-    aboutTitleFirst: "More than an",
-    aboutTitleAccent: "invitation.",
+        contactUs:
+            "Контактирај нè",
 
-    aboutLead: "We believe every special moment deserves a special beginning.",
 
-    aboutDescription:
-      "eMPe Studio creates personalized digital invitations that combine elegance, thoughtful details and a modern digital experience.",
+        /* ---------------- HOW IT WORKS ---------------- */
 
-    aboutDescriptionTwo:
-      "Every invitation is designed to reflect the atmosphere of your event and make it easy to share with the people who matter most.",
+        processEyebrow:
+            "Како функционира",
 
-    aboutFloating: "Created with attention to detail.",
+        processTitleFirst:
+            "Од идеја до",
 
-    aboutValueOneTitle: "Personal",
-    aboutValueOneText: "A design created around your special moment.",
+        processTitleAccent:
+            "ваша покана.",
 
-    aboutValueTwoTitle: "Elegant",
-    aboutValueTwoText: "Attention to every visual detail.",
+        processDescription:
+            "Процесот е едноставен. Вие го избирате стилот, а ние се грижиме за деталите.",
 
-    aboutValueThreeTitle: "Digital",
-    aboutValueThreeText: "Modern and effortless to share.",
+        processStepOneTitle:
+            "Одберете дизајн",
 
-    invitationsEyebrow: "Our invitations",
+        processStepOneText:
+            "Разгледајте ги достапните колекции и одберете го стилот кој најдобро одговара на вашиот настан.",
 
-    invitationsTitleFirst: "A design for every",
+        processStepTwoTitle:
+            "Испратете ги деталите",
 
-    invitationsTitleAccent: "special moment.",
+        processStepTwoText:
+            "Ни ги испраќате имињата, датумот, локацијата, текстот и останатите информации за вашиот настан.",
 
-    invitationsDescription:
-      "Choose the style that best tells your story. Every design can be personalized to match your event.",
+        processStepThreeTitle:
+            "Ние ја персонализираме",
 
-    weddingTitle: "Wedding invitations",
+        processStepThreeText:
+            "Поканата ја прилагодуваме со вашите информации, фотографии и избраната визуелна насока.",
 
-    weddingDescription:
-      "Elegant digital invitations created for the day you want to remember forever.",
+        processStepFourTitle:
+            "Споделете ја поканата",
 
-    birthdayTitle: "Birthday invitations",
+        processStepFourText:
+            "Ја добивате вашата готова дигитална покана преку уникатен линк кој можете лесно да го споделите со гостите.",
 
-    birthdayDescription:
-      "Modern personalized invitations for celebrations that deserve a special beginning.",
+        processCtaSmall:
+            "Подготвени сте?",
 
-    christeningTitle: "Christening invitations",
+        processCtaTitle:
+            "Вашата приказна може да започне тука.",
 
-    christeningDescription:
-      "Soft and thoughtfully designed invitations for a beautiful family moment.",
+        processCtaButton:
+            "Побарај понуда",
 
-    specialTitle: "Special events",
 
-    specialDescription:
-      "Engagements, anniversaries, celebrations and moments you want to announce in a different way.",
+        /* ---------------- FEATURES ---------------- */
 
-    viewCollection: "Explore collection",
+        featuresEyebrow:
+            "Повеќе од покана",
 
-    customInvitationText:
-      "Have something different in mind? We can always create something special just for you.",
+        featuresTitleFirst:
+            "Вашиот настан.",
 
-    contactUs: "Contact us",
-    processEyebrow: "How it works",
+        featuresTitleAccent:
+            "На едно место.",
 
-    processTitleFirst: "From an idea to",
+        featuresDescription:
+            "Дигиталната покана може да содржи сè што им е потребно на вашите гости — елегантно, едноставно и лесно достапно.",
 
-    processTitleAccent: "your invitation.",
+        featureRsvpTitle:
+            "RSVP потврда",
 
-    processDescription:
-      "The process is simple. You choose the style and we take care of the details.",
+        featureRsvpText:
+            "Гостите можат директно преку поканата да потврдат дали ќе присуствуваат.",
 
-    processStepOneTitle: "Choose your design",
+        featureMapTitle:
+            "Локација",
 
-    processStepOneText:
-      "Explore the available collections and choose the style that best reflects your event.",
+        featureMapText:
+            "Директен пристап до локацијата на настанот преку Google Maps.",
 
-    processStepTwoTitle: "Send us the details",
+        featureCountdownTitle:
+            "Countdown",
 
-    processStepTwoText:
-      "Send us the names, date, location, wording and any other information needed for your event.",
+        featureCountdownText:
+            "Одбројување до вашиот посебен ден.",
 
-    processStepThreeTitle: "We personalize it",
+        featureGalleryTitle:
+            "Галерија",
 
-    processStepThreeText:
-      "We customize the invitation with your information, photos and selected visual direction.",
+        featureGalleryText:
+            "Вашите омилени фотографии како дел од дигиталната приказна.",
 
-    processStepFourTitle: "Share your invitation",
+        featureLanguagesTitle:
+            "Повеќе јазици",
 
-    processStepFourText:
-      "Receive your completed digital invitation through a unique link that can easily be shared with your guests.",
+        featureLanguagesText:
+            "Можност поканата да биде достапна на повеќе јазици.",
 
-    processCtaSmall: "Ready?",
+        featureDetailsTitle:
+            "Дополнителни детали",
 
-    processCtaTitle: "Your story can begin here.",
+        featureDetailsText:
+            "Dress code, агенда, важни информации, контакти и други детали.",
 
-    processCtaButton: "Request a quote",
-  },
+
+        /* ---------------- COLLECTIONS ---------------- */
+
+        collectionsEyebrow:
+            "Колекции",
+
+        collectionsTitleFirst:
+            "Пронајдете го",
+
+        collectionsTitleAccent:
+            "вашиот стил.",
+
+        collectionsDescription:
+            "Неколку различни визуелни насоки, создадени за различни приказни.",
+
+        collectionIvoryText:
+            "Минималистички и безвременски стил.",
+
+        collectionAmoreText:
+            "Романтична и нежна визуелна приказна.",
+
+        collectionEditorialText:
+            "Модерен изглед со editorial карактер.",
+
+        viewDemo:
+            "Погледни демо →",
+
+        collectionsComing:
+            "Нови eMPe колекции ќе се додаваат редовно.",
+
+
+        /* ---------------- PACKAGES ---------------- */
+
+        packagesEyebrow:
+            "eMPe пакети",
+
+        packagesTitleFirst:
+            "Изберете го",
+
+        packagesTitleAccent:
+            "вашето искуство.",
+
+        essentialSubtitle:
+            "Едноставно и елегантно.",
+
+        essentialOne:
+            "Персонализиран дизајн",
+
+        essentialTwo:
+            "Детали за настанот",
+
+        essentialThree:
+            "Локација",
+
+        essentialFour:
+            "Уникатен линк",
+
+        premiumSubtitle:
+            "Целосно дигитално искуство.",
+
+        premiumOne:
+            "Сè од Essential",
+
+        premiumTwo:
+            "Countdown",
+
+        premiumThree:
+            "Галерија",
+
+        premiumFour:
+            "Дополнителни секции",
+
+        premiumFive:
+            "Повеќе јазици",
+
+        signatureSubtitle:
+            "Создадено целосно за вас.",
+
+        signatureOne:
+            "Сè од Premium",
+
+        signatureTwo:
+            "Custom визуелен концепт",
+
+        signatureThree:
+            "RSVP систем",
+
+        signatureFour:
+            "Дополнителни функционалности",
+
+        signatureFive:
+            "Приоритетна персонализација",
+
+        priceOnRequest:
+            "Цена по понуда",
+
+        choosePackage:
+            "Избери пакет",
+
+        mostPopular:
+            "Најпопуларно",
+
+
+        /* ---------------- FAQ ---------------- */
+
+        faqEyebrow:
+            "ЧПП",
+
+        faqTitleFirst:
+            "Најчесто",
+
+        faqTitleAccent:
+            "прашувате.",
+
+        faqOneQuestion:
+            "Што претставува дигитална покана?",
+
+        faqOneAnswer:
+            "Дигиталната покана е интерактивна веб-покана која се отвора преку уникатен линк и лесно се споделува со вашите гости.",
+
+        faqTwoQuestion:
+            "Може ли поканата да се персонализира?",
+
+        faqTwoAnswer:
+            "Да. Текстовите, имињата, датумот, фотографиите, боите и избрани елементи можат да бидат прилагодени.",
+
+        faqThreeQuestion:
+            "Како ја испраќам поканата?",
+
+        faqThreeAnswer:
+            "Ќе добиете уникатен линк кој можете да го испратите преку Messenger, Instagram, Viber, WhatsApp или друг начин.",
+
+        faqFourQuestion:
+            "Може ли поканата да биде на повеќе јазици?",
+
+        faqFourAnswer:
+            "Да. Во зависност од пакетот, поканата може да има избор на јазик.",
+
+        faqFiveQuestion:
+            "Како функционира RSVP?",
+
+        faqFiveAnswer:
+            "Гостите преку самата покана ќе можат да потврдат дали ќе присуствуваат, а одговорите ќе бидат организирани за полесно следење.",
+
+
+        /* ---------------- CONTACT ---------------- */
+
+        contactEyebrow:
+            "Контакт",
+
+        contactTitleFirst:
+            "Ајде да создадеме",
+
+        contactTitleAccent:
+            "нешто посебно.",
+
+        contactDescription:
+            "Кажете ни малку повеќе за вашиот настан и идејата која ја имате. Ќе ви помогнеме да го изберете вистинското eMPe искуство.",
+
+        contactEmail:
+            "Испрати порака",
+
+
+        /* ---------------- FOOTER ---------------- */
+
+        rightsReserved:
+            "Сите права се задржани."
+    },
+
+
+    /* ======================================================
+       ENGLISH
+    ====================================================== */
+
+    en: {
+
+        /* ---------------- NAVIGATION ---------------- */
+
+        navHome: "Home",
+        navAbout: "About",
+        navInvitations: "Invitations",
+        navHow: "How it works",
+        navPackages: "Packages",
+        navFaq: "FAQ",
+        navContact: "Contact",
+
+        languageLabel: "Language",
+
+
+        /* ---------------- HERO ---------------- */
+
+        heroEyebrow:
+            "Invitations made to be remembered",
+
+        heroTitleFirst:
+            "Digital",
+
+        heroTitleAccent:
+            "invitations",
+
+        heroTitleLast:
+            "with style.",
+
+        heroDescription:
+            "We create personalized digital invitations for your most special moments — designed with care, elegance and attention to every detail.",
+
+        heroViewInvitations:
+            "Explore invitations",
+
+        heroRequestOffer:
+            "Request a quote",
+
+        heroNote:
+            "Personalized. Digital. Made for you.",
+
+        inviteYou:
+            "YOU ARE INVITED",
+
+        inviteLocation:
+            "Skopje",
+
+        openInvitation:
+            "Open invitation",
+
+        floatingPersonalized:
+            "Personalized",
+
+        floatingPersonalizedSmall:
+            "made for your special moment",
+
+        floatingDigitalSmall:
+            "easy to share",
+
+
+        /* ---------------- ABOUT ---------------- */
+
+        aboutEyebrow:
+            "About eMPe Studio",
+
+        aboutTitleFirst:
+            "More than an",
+
+        aboutTitleAccent:
+            "invitation.",
+
+        aboutLead:
+            "We believe every special moment deserves a special beginning.",
+
+        aboutDescription:
+            "eMPe Studio creates personalized digital invitations that combine elegance, thoughtful details and a modern digital experience.",
+
+        aboutDescriptionTwo:
+            "Every invitation is designed to reflect the atmosphere of your event and make it easy to share with the people who matter most.",
+
+        aboutFloating:
+            "Created with attention to detail.",
+
+        aboutValueOneTitle:
+            "Personal",
+
+        aboutValueOneText:
+            "A design created around your special moment.",
+
+        aboutValueTwoTitle:
+            "Elegant",
+
+        aboutValueTwoText:
+            "Attention to every visual detail.",
+
+        aboutValueThreeTitle:
+            "Digital",
+
+        aboutValueThreeText:
+            "Modern and effortless to share.",
+
+
+        /* ---------------- INVITATIONS ---------------- */
+
+        invitationsEyebrow:
+            "Our invitations",
+
+        invitationsTitleFirst:
+            "A design for every",
+
+        invitationsTitleAccent:
+            "special moment.",
+
+        invitationsDescription:
+            "Choose the style that best tells your story. Every design can be personalized to match your event.",
+
+        weddingTitle:
+            "Wedding invitations",
+
+        weddingDescription:
+            "Elegant digital invitations created for the day you want to remember forever.",
+
+        birthdayTitle:
+            "Birthday invitations",
+
+        birthdayDescription:
+            "Modern personalized invitations for celebrations that deserve a special beginning.",
+
+        christeningTitle:
+            "Christening invitations",
+
+        christeningDescription:
+            "Soft and thoughtfully designed invitations for a beautiful family moment.",
+
+        specialTitle:
+            "Special events",
+
+        specialDescription:
+            "Engagements, anniversaries, celebrations and moments you want to announce in a different way.",
+
+        viewCollection:
+            "Explore collection",
+
+        customInvitationText:
+            "Have something different in mind? We can always create something special just for you.",
+
+        contactUs:
+            "Contact us",
+
+
+        /* ---------------- HOW IT WORKS ---------------- */
+
+        processEyebrow:
+            "How it works",
+
+        processTitleFirst:
+            "From an idea to",
+
+        processTitleAccent:
+            "your invitation.",
+
+        processDescription:
+            "The process is simple. You choose the style and we take care of the details.",
+
+        processStepOneTitle:
+            "Choose your design",
+
+        processStepOneText:
+            "Explore the available collections and choose the style that best reflects your event.",
+
+        processStepTwoTitle:
+            "Send us the details",
+
+        processStepTwoText:
+            "Send us the names, date, location, wording and any other information needed for your event.",
+
+        processStepThreeTitle:
+            "We personalize it",
+
+        processStepThreeText:
+            "We customize the invitation with your information, photos and selected visual direction.",
+
+        processStepFourTitle:
+            "Share your invitation",
+
+        processStepFourText:
+            "Receive your completed digital invitation through a unique link that can easily be shared with your guests.",
+
+        processCtaSmall:
+            "Ready?",
+
+        processCtaTitle:
+            "Your story can begin here.",
+
+        processCtaButton:
+            "Request a quote",
+
+
+        /* ---------------- FEATURES ---------------- */
+
+        featuresEyebrow:
+            "More than an invitation",
+
+        featuresTitleFirst:
+            "Your event.",
+
+        featuresTitleAccent:
+            "All in one place.",
+
+        featuresDescription:
+            "Your digital invitation can include everything your guests need — beautifully presented, simple and easy to access.",
+
+        featureRsvpTitle:
+            "RSVP confirmation",
+
+        featureRsvpText:
+            "Guests can confirm their attendance directly through the invitation.",
+
+        featureMapTitle:
+            "Location",
+
+        featureMapText:
+            "Direct access to the event location through Google Maps.",
+
+        featureCountdownTitle:
+            "Countdown",
+
+        featureCountdownText:
+            "A countdown to your special day.",
+
+        featureGalleryTitle:
+            "Gallery",
+
+        featureGalleryText:
+            "Your favorite photos as part of your digital story.",
+
+        featureLanguagesTitle:
+            "Multiple languages",
+
+        featureLanguagesText:
+            "The invitation can be available in more than one language.",
+
+        featureDetailsTitle:
+            "Extra details",
+
+        featureDetailsText:
+            "Dress code, schedule, important information, contacts and other event details.",
+
+
+        /* ---------------- COLLECTIONS ---------------- */
+
+        collectionsEyebrow:
+            "Collections",
+
+        collectionsTitleFirst:
+            "Find",
+
+        collectionsTitleAccent:
+            "your style.",
+
+        collectionsDescription:
+            "Different visual directions created for different stories.",
+
+        collectionIvoryText:
+            "A minimal and timeless style.",
+
+        collectionAmoreText:
+            "A soft and romantic visual story.",
+
+        collectionEditorialText:
+            "A modern design with an editorial character.",
+
+        viewDemo:
+            "View demo →",
+
+        collectionsComing:
+            "New eMPe collections will be added regularly.",
+
+
+        /* ---------------- PACKAGES ---------------- */
+
+        packagesEyebrow:
+            "eMPe packages",
+
+        packagesTitleFirst:
+            "Choose",
+
+        packagesTitleAccent:
+            "your experience.",
+
+        essentialSubtitle:
+            "Simple and elegant.",
+
+        essentialOne:
+            "Personalized design",
+
+        essentialTwo:
+            "Event details",
+
+        essentialThree:
+            "Location",
+
+        essentialFour:
+            "Unique link",
+
+        premiumSubtitle:
+            "A complete digital experience.",
+
+        premiumOne:
+            "Everything in Essential",
+
+        premiumTwo:
+            "Countdown",
+
+        premiumThree:
+            "Gallery",
+
+        premiumFour:
+            "Additional sections",
+
+        premiumFive:
+            "Multiple languages",
+
+        signatureSubtitle:
+            "Created entirely around you.",
+
+        signatureOne:
+            "Everything in Premium",
+
+        signatureTwo:
+            "Custom visual concept",
+
+        signatureThree:
+            "RSVP system",
+
+        signatureFour:
+            "Additional functionality",
+
+        signatureFive:
+            "Priority personalization",
+
+        priceOnRequest:
+            "Price on request",
+
+        choosePackage:
+            "Choose package",
+
+        mostPopular:
+            "Most popular",
+
+
+        /* ---------------- FAQ ---------------- */
+
+        faqEyebrow:
+            "FAQ",
+
+        faqTitleFirst:
+            "Frequently",
+
+        faqTitleAccent:
+            "asked.",
+
+        faqOneQuestion:
+            "What is a digital invitation?",
+
+        faqOneAnswer:
+            "A digital invitation is an interactive web invitation opened through a unique link and easily shared with your guests.",
+
+        faqTwoQuestion:
+            "Can the invitation be personalized?",
+
+        faqTwoAnswer:
+            "Yes. The wording, names, date, photos, colors and selected elements can be customized.",
+
+        faqThreeQuestion:
+            "How do I send the invitation?",
+
+        faqThreeAnswer:
+            "You will receive a unique link that can be shared through Messenger, Instagram, Viber, WhatsApp or another platform.",
+
+        faqFourQuestion:
+            "Can the invitation be available in multiple languages?",
+
+        faqFourAnswer:
+            "Yes. Depending on the selected package, the invitation can include a language switcher.",
+
+        faqFiveQuestion:
+            "How does RSVP work?",
+
+        faqFiveAnswer:
+            "Guests can confirm whether they will attend directly through the invitation, and the responses can be organized for easier tracking.",
+
+
+        /* ---------------- CONTACT ---------------- */
+
+        contactEyebrow:
+            "Contact",
+
+        contactTitleFirst:
+            "Let's create",
+
+        contactTitleAccent:
+            "something special.",
+
+        contactDescription:
+            "Tell us a little more about your event and the idea you have in mind. We will help you choose the right eMPe experience.",
+
+        contactEmail:
+            "Send a message",
+
+
+        /* ---------------- FOOTER ---------------- */
+
+        rightsReserved:
+            "All rights reserved."
+    }
 };
+
 
 /* ==========================================================
    03. PAGE / SEO TEXT BY LANGUAGE
 ========================================================== */
 
 const pageMeta = {
-  mk: {
-    title: "eMPe Studio | Дигитални покани",
-    description:
-      "eMPe Studio создава елегантни и персонализирани дигитални покани за вашите посебни моменти.",
-  },
 
-  en: {
-    title: "eMPe Studio | Digital Invitations",
-    description:
-      "eMPe Studio creates elegant and personalized digital invitations for your most special moments.",
-  },
+    mk: {
+        title:
+            "eMPe Studio | Дигитални покани",
+
+        description:
+            "eMPe Studio создава елегантни и персонализирани дигитални покани за вашите посебни моменти."
+    },
+
+    en: {
+        title:
+            "eMPe Studio | Digital Invitations",
+
+        description:
+            "eMPe Studio creates elegant and personalized digital invitations for your most special moments."
+    }
 };
 
+
 /* ==========================================================
-   04. HEADER ON SCROLL
+   04. SAFE LOCAL STORAGE
+========================================================== */
+
+function saveLanguage(language) {
+
+    try {
+
+        localStorage.setItem(
+            "empeLanguage",
+            language
+        );
+
+    } catch (error) {
+
+        /* Website continues even if localStorage is unavailable. */
+
+    }
+}
+
+
+function getSavedLanguage() {
+
+    try {
+
+        return (
+            localStorage.getItem(
+                "empeLanguage"
+            ) || "mk"
+        );
+
+    } catch (error) {
+
+        return "mk";
+
+    }
+}
+
+
+/* ==========================================================
+   05. HEADER ON SCROLL
 ========================================================== */
 
 function updateHeaderOnScroll() {
-  if (!header) {
-    return;
-  }
 
-  if (window.scrollY > 40) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+    if (!header) {
+        return;
+    }
+
+
+    if (window.scrollY > 40) {
+
+        header.classList.add(
+            "scrolled"
+        );
+
+    } else {
+
+        header.classList.remove(
+            "scrolled"
+        );
+
+    }
 }
 
-window.addEventListener("scroll", updateHeaderOnScroll);
+
+window.addEventListener(
+    "scroll",
+    updateHeaderOnScroll,
+    { passive: true }
+);
+
 
 updateHeaderOnScroll();
 
+
 /* ==========================================================
-   05. MOBILE MENU - OPEN / CLOSE
+   06. MOBILE MENU
 ========================================================== */
 
 function openMobileMenu() {
-  if (!mobileMenu || !menuToggle) {
-    return;
-  }
 
-  mobileMenu.classList.add("open");
-  menuToggle.classList.add("active");
+    if (
+        !mobileMenu ||
+        !menuToggle
+    ) {
+        return;
+    }
 
-  document.body.classList.add("menu-open");
 
-  menuToggle.setAttribute("aria-expanded", "true");
+    mobileMenu.classList.add(
+        "open"
+    );
+
+    menuToggle.classList.add(
+        "active"
+    );
+
+    document.body.classList.add(
+        "menu-open"
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "true"
+    );
 }
+
 
 function closeMobileMenu() {
-  if (!mobileMenu || !menuToggle) {
-    return;
-  }
 
-  mobileMenu.classList.remove("open");
-  menuToggle.classList.remove("active");
+    if (
+        !mobileMenu ||
+        !menuToggle
+    ) {
+        return;
+    }
 
-  document.body.classList.remove("menu-open");
 
-  menuToggle.setAttribute("aria-expanded", "false");
+    mobileMenu.classList.remove(
+        "open"
+    );
+
+    menuToggle.classList.remove(
+        "active"
+    );
+
+    document.body.classList.remove(
+        "menu-open"
+    );
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+    );
 }
+
 
 function toggleMobileMenu() {
-  if (!mobileMenu) {
-    return;
-  }
 
-  const isOpen = mobileMenu.classList.contains("open");
+    if (!mobileMenu) {
+        return;
+    }
 
-  if (isOpen) {
-    closeMobileMenu();
-  } else {
-    openMobileMenu();
-  }
+
+    const isOpen =
+        mobileMenu.classList.contains(
+            "open"
+        );
+
+
+    if (isOpen) {
+
+        closeMobileMenu();
+
+    } else {
+
+        openMobileMenu();
+
+    }
 }
+
 
 if (menuToggle) {
-  menuToggle.addEventListener("click", toggleMobileMenu);
+
+    menuToggle.addEventListener(
+        "click",
+        toggleMobileMenu
+    );
 }
 
-/* ==========================================================
-   06. CLOSE MOBILE MENU AFTER CLICKING A LINK
-========================================================== */
 
 mobileLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    closeMobileMenu();
-  });
+
+    link.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
 });
 
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (event.key === "Escape") {
+
+            closeMobileMenu();
+
+        }
+    }
+);
+
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (
+            window.innerWidth > 960
+        ) {
+
+            closeMobileMenu();
+
+        }
+    }
+);
+
+
 /* ==========================================================
-   07. CLOSE MOBILE MENU WITH ESCAPE KEY
+   07. FAQ HEIGHT HELPER
 ========================================================== */
 
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closeMobileMenu();
-  }
-});
+function refreshOpenFaqHeight() {
+
+    const openFaq =
+        document.querySelector(
+            ".faq-item.open"
+        );
+
+
+    if (!openFaq) {
+        return;
+    }
+
+
+    const answer =
+        openFaq.querySelector(
+            ".faq-answer"
+        );
+
+
+    if (answer) {
+
+        answer.style.maxHeight =
+            answer.scrollHeight +
+            "px";
+
+    }
+}
+
 
 /* ==========================================================
-   08. CLOSE MOBILE MENU WHEN SCREEN GETS BIGGER
-========================================================== */
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 960) {
-    closeMobileMenu();
-  }
-});
-
-/* ==========================================================
-   09. LANGUAGE SWITCHER
+   08. LANGUAGE SWITCHER
 ========================================================== */
 
 function setLanguage(language) {
-  if (!translations[language]) {
-    language = "mk";
-  }
 
-  translatableElements.forEach((element) => {
-    const key = element.dataset.i18n;
+    if (!translations[language]) {
 
-    if (translations[language][key] !== undefined) {
-      element.textContent = translations[language][key];
+        language = "mk";
+
     }
-  });
 
-  document.documentElement.lang = language;
 
-  languageButtons.forEach((button) => {
-    const isActive = button.dataset.lang === language;
+    translatableElements.forEach(
+        (element) => {
 
-    button.classList.toggle("active", isActive);
+            const key =
+                element.dataset.i18n;
 
-    button.setAttribute("aria-pressed", isActive ? "true" : "false");
-  });
 
-  localStorage.setItem("empeLanguage", language);
+            if (
+                translations[language][key] !== undefined
+            ) {
 
-  if (pageMeta[language]) {
-    document.title = pageMeta[language].title;
-  }
+                element.textContent =
+                    translations[language][key];
 
-  const metaDescription = document.querySelector('meta[name="description"]');
+            } else {
 
-  if (metaDescription && pageMeta[language]) {
-    metaDescription.setAttribute("content", pageMeta[language].description);
-  }
+                console.warn(
+                    `[eMPe] Missing translation: ${language}.${key}`
+                );
+
+            }
+        }
+    );
+
+
+    document.documentElement.lang =
+        language;
+
+
+    languageButtons.forEach(
+        (button) => {
+
+            const isActive =
+                button.dataset.lang ===
+                language;
+
+
+            button.classList.toggle(
+                "active",
+                isActive
+            );
+
+
+            button.setAttribute(
+                "aria-pressed",
+                isActive
+                    ? "true"
+                    : "false"
+            );
+        }
+    );
+
+
+    saveLanguage(language);
+
+
+    if (pageMeta[language]) {
+
+        document.title =
+            pageMeta[language].title;
+
+    }
+
+
+    const metaDescription =
+        document.querySelector(
+            'meta[name="description"]'
+        );
+
+
+    if (
+        metaDescription &&
+        pageMeta[language]
+    ) {
+
+        metaDescription.setAttribute(
+            "content",
+            pageMeta[language].description
+        );
+    }
+
+
+    requestAnimationFrame(
+        refreshOpenFaqHeight
+    );
 }
 
-/* ==========================================================
-   10. LANGUAGE BUTTON EVENTS
-========================================================== */
 
-languageButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const selectedLanguage = button.dataset.lang;
+languageButtons.forEach(
+    (button) => {
 
-    setLanguage(selectedLanguage);
-  });
-});
+        button.addEventListener(
+            "click",
+            () => {
 
-/* ==========================================================
-   11. LOAD SAVED LANGUAGE
-========================================================== */
+                const selectedLanguage =
+                    button.dataset.lang;
 
-const savedLanguage = localStorage.getItem("empeLanguage") || "mk";
+
+                setLanguage(
+                    selectedLanguage
+                );
+            }
+        );
+    }
+);
+
+
+const savedLanguage =
+    getSavedLanguage();
+
 
 setLanguage(savedLanguage);
 
+
 /* ==========================================================
-   12. ACTIVE NAVIGATION LINK ON SCROLL
+   09. ACTIVE NAVIGATION LINK ON SCROLL
 ========================================================== */
 
-const sections = document.querySelectorAll("main section[id]");
-
-const desktopNavLinks = document.querySelectorAll(".desktop-nav .nav-link");
-
 function updateActiveNavigation() {
-  let currentSection = "home";
-
-  const scrollPosition = window.scrollY + 160;
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop;
-
-    const sectionHeight = section.offsetHeight;
 
     if (
-      scrollPosition >= sectionTop &&
-      scrollPosition < sectionTop + sectionHeight
+        sections.length === 0 ||
+        desktopNavLinks.length === 0
     ) {
-      currentSection = section.id;
+        return;
     }
-  });
 
-  desktopNavLinks.forEach((link) => {
-    const target = link.getAttribute("href");
 
-    link.classList.toggle("active", target === `#${currentSection}`);
-  });
+    let currentSection =
+        "home";
+
+
+    const scrollPosition =
+        window.scrollY + 170;
+
+
+    sections.forEach(
+        (section) => {
+
+            const sectionTop =
+                section.offsetTop;
+
+            const sectionHeight =
+                section.offsetHeight;
+
+
+            if (
+                scrollPosition >=
+                    sectionTop &&
+                scrollPosition <
+                    sectionTop +
+                    sectionHeight
+            ) {
+
+                currentSection =
+                    section.id;
+
+            }
+        }
+    );
+
+
+    desktopNavLinks.forEach(
+        (link) => {
+
+            const target =
+                link.getAttribute(
+                    "href"
+                );
+
+
+            link.classList.toggle(
+                "active",
+                target ===
+                    `#${currentSection}`
+            );
+        }
+    );
 }
 
-window.addEventListener("scroll", updateActiveNavigation);
+
+window.addEventListener(
+    "scroll",
+    updateActiveNavigation,
+    { passive: true }
+);
+
 
 updateActiveNavigation();
 
+
 /* ==========================================================
-   13. SMOOTH SCROLL FALLBACK
+   10. SMOOTH SCROLL
 ========================================================== */
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener("click", (event) => {
-    const targetId = link.getAttribute("href");
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach((link) => {
 
-    if (!targetId || targetId === "#") {
-      return;
-    }
+        link.addEventListener(
+            "click",
+            (event) => {
 
-    const targetElement = document.querySelector(targetId);
+                const targetId =
+                    link.getAttribute(
+                        "href"
+                    );
 
-    if (!targetElement) {
-      return;
-    }
 
-    event.preventDefault();
+                if (
+                    !targetId ||
+                    targetId === "#"
+                ) {
+                    return;
+                }
 
-    const headerHeight = header ? header.offsetHeight : 0;
 
-    const targetPosition =
-      targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                const targetElement =
+                    document.querySelector(
+                        targetId
+                    );
 
-    window.scrollTo({
-      top: targetPosition,
-      behavior: "smooth",
+
+                if (!targetElement) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                const headerHeight =
+                    header
+                        ? header.offsetHeight
+                        : 0;
+
+
+                const targetPosition =
+                    targetElement
+                        .getBoundingClientRect()
+                        .top +
+                    window.scrollY -
+                    headerHeight;
+
+
+                window.scrollTo({
+                    top:
+                        targetPosition,
+                    behavior:
+                        "smooth"
+                });
+            }
+        );
     });
-  });
-});
+
 
 /* ==========================================================
-   14. DEMO INVITATION BUTTON
+   11. HERO DEMO INVITATION BUTTON
 ========================================================== */
 
-const demoInvitationButton = document.querySelector(".invite-demo-btn");
+const demoInvitationButton =
+    document.querySelector(
+        ".invite-demo-btn"
+    );
+
 
 if (demoInvitationButton) {
-  demoInvitationButton.addEventListener("click", () => {
-    const currentLanguage = localStorage.getItem("empeLanguage") || "mk";
 
-    if (currentLanguage === "en") {
-      alert("The first eMPe invitation demo is coming soon.");
-    } else {
-      alert("Првата eMPe demo покана наскоро.");
-    }
-  });
+    demoInvitationButton.addEventListener(
+        "click",
+        () => {
+
+            const currentLanguage =
+                getSavedLanguage();
+
+
+            if (
+                currentLanguage === "en"
+            ) {
+
+                alert(
+                    "The first eMPe invitation demo is coming soon."
+                );
+
+            } else {
+
+                alert(
+                    "Првата eMPe demo покана наскоро."
+                );
+
+            }
+        }
+    );
 }
 
+
 /* ==========================================================
-   15. SECTION SCROLL REVEAL
+   12. SECTION SCROLL REVEAL
 ========================================================== */
 
-const revealElements = document.querySelectorAll(".section-reveal");
+const revealElements =
+    document.querySelectorAll(
+        ".section-reveal"
+    );
 
-const revealObserver = new IntersectionObserver(
-  (entries, observer) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
 
-        observer.unobserve(entry.target);
-      }
-    });
-  },
+if (
+    "IntersectionObserver" in window
+) {
 
-  {
-    threshold: 0.15,
-  },
+    const revealObserver =
+        new IntersectionObserver(
+
+            (entries, observer) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList.add(
+                                    "visible"
+                                );
+
+
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+                    }
+                );
+            },
+
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -40px 0px"
+            }
+        );
+
+
+    revealElements.forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
+} else {
+
+    revealElements.forEach(
+        (element) => {
+
+            element.classList.add(
+                "visible"
+            );
+
+        }
+    );
+}
+
+
+/* ==========================================================
+   13. HOW IT WORKS TIMELINE ANIMATION
+========================================================== */
+
+const processSection =
+    document.querySelector(
+        ".process-section"
+    );
+
+
+if (
+    processSection &&
+    "IntersectionObserver" in window
+) {
+
+    const processObserver =
+        new IntersectionObserver(
+
+            (entries, observer) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            processSection
+                                .classList.add(
+                                    "timeline-visible"
+                                );
+
+
+                            observer.unobserve(
+                                processSection
+                            );
+                        }
+                    }
+                );
+            },
+
+            {
+                threshold: 0.20
+            }
+        );
+
+
+    processObserver.observe(
+        processSection
+    );
+
+} else if (processSection) {
+
+    processSection.classList.add(
+        "timeline-visible"
+    );
+
+}
+
+
+/* ==========================================================
+   14. COLLECTION DEMO BUTTONS
+========================================================== */
+
+const collectionDemoButtons =
+    document.querySelectorAll(
+        ".collection-demo-btn"
+    );
+
+
+collectionDemoButtons.forEach(
+    (button) => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const currentLanguage =
+                    getSavedLanguage();
+
+
+                if (
+                    currentLanguage === "en"
+                ) {
+
+                    alert(
+                        "This eMPe demo invitation is coming soon."
+                    );
+
+                } else {
+
+                    alert(
+                        "Оваа eMPe demo покана наскоро ќе биде достапна."
+                    );
+
+                }
+            }
+        );
+    }
 );
 
-revealElements.forEach((element) => {
-  revealObserver.observe(element);
-});
 
 /* ==========================================================
-   16. HOW IT WORKS TIMELINE ANIMATION
+   15. FAQ ACCORDION
 ========================================================== */
 
-const processSection = document.querySelector(".process-section");
+const faqItems =
+    document.querySelectorAll(
+        ".faq-item"
+    );
 
-if (processSection) {
-  const processObserver = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          processSection.classList.add("timeline-visible");
 
-          observer.unobserve(processSection);
+faqItems.forEach(
+    (item) => {
+
+        const button =
+            item.querySelector(
+                ".faq-question"
+            );
+
+        const answer =
+            item.querySelector(
+                ".faq-answer"
+            );
+
+
+        if (
+            !button ||
+            !answer
+        ) {
+            return;
         }
-      });
-    },
 
-    {
-      threshold: 0.25,
-    },
-  );
 
-  processObserver.observe(processSection);
+        button.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                const isOpen =
+                    item.classList.contains(
+                        "open"
+                    );
+
+
+                faqItems.forEach(
+                    (otherItem) => {
+
+                        otherItem.classList.remove(
+                            "open"
+                        );
+
+
+                        const otherButton =
+                            otherItem.querySelector(
+                                ".faq-question"
+                            );
+
+                        const otherAnswer =
+                            otherItem.querySelector(
+                                ".faq-answer"
+                            );
+
+
+                        if (otherButton) {
+
+                            otherButton.setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
+
+                        }
+
+
+                        if (otherAnswer) {
+
+                            otherAnswer.style.maxHeight =
+                                null;
+
+                        }
+                    }
+                );
+
+
+                if (!isOpen) {
+
+                    item.classList.add(
+                        "open"
+                    );
+
+
+                    button.setAttribute(
+                        "aria-expanded",
+                        "true"
+                    );
+
+
+                    answer.style.maxHeight =
+                        answer.scrollHeight +
+                        "px";
+                }
+            }
+        );
+    }
+);
+
+
+/* ==========================================================
+   16. CURRENT YEAR
+========================================================== */
+
+const currentYear =
+    document.getElementById(
+        "currentYear"
+    );
+
+
+if (currentYear) {
+
+    currentYear.textContent =
+        new Date().getFullYear();
+
 }
+
+
+/* ==========================================================
+   17. RESIZE HELPERS
+========================================================== */
+
+window.addEventListener(
+    "resize",
+    refreshOpenFaqHeight
+);
+
+
+/* ==========================================================
+   18. DEBUG: CHECK MISSING TRANSLATION KEYS
+
+   If later you add a new data-i18n="something" in HTML but
+   forget to add it here, the browser console will tell you.
+========================================================== */
+
+function checkMissingTranslationKeys() {
+
+    translatableElements.forEach(
+        (element) => {
+
+            const key =
+                element.dataset.i18n;
+
+
+            ["mk", "en"].forEach(
+                (language) => {
+
+                    if (
+                        translations[language][key] === undefined
+                    ) {
+
+                        console.warn(
+                            `[eMPe] Missing translation key: ${language}.${key}`
+                        );
+
+                    }
+                }
+            );
+        }
+    );
+}
+
+
+checkMissingTranslationKeys();
