@@ -1,827 +1,616 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="mk">
+  <head>
+    <meta charset="UTF-8" />
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>eMPe Studio | Digital Invitations</title>
 
     <meta
-        name="description"
-        content="eMPe Studio создава елегантни и персонализирани дигитални покани за вашите посебни моменти."
-    >
+      name="description"
+      content="eMPe Studio создава елегантни и персонализирани дигитални покани за вашите посебни моменти."
+    />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-
-<body>
-
-
+  <body>
     <!-- ==================================================
          HEADER
     =================================================== -->
 
     <header class="site-header" id="header">
+      <div class="nav-container">
+        <!-- BRAND -->
 
-        <div class="nav-container">
+        <a href="#home" class="brand" aria-label="eMPe Studio">
+          <img
+            src="assets/logo/empe-logo.png"
+            alt="eMPe Studio logo"
+            class="brand-logo"
+          />
 
+          <div class="brand-text">
+            <span class="brand-name"> eMPe Studio </span>
 
-            <!-- BRAND -->
+            <span class="brand-tagline"> digital experience </span>
+          </div>
+        </a>
 
-            <a
-                href="#home"
-                class="brand"
-                aria-label="eMPe Studio"
-            >
+        <!-- DESKTOP NAVIGATION -->
 
-                <img
-                    src="assets/logo/empe-logo.png"
-                    alt="eMPe Studio logo"
-                    class="brand-logo"
-                >
+        <nav class="desktop-nav" aria-label="Главна навигација">
+          <a href="#home" class="nav-link active" data-i18n="navHome">
+            Почетна
+          </a>
 
+          <a href="#about" class="nav-link" data-i18n="navAbout"> За нас </a>
 
-                <div class="brand-text">
+          <a href="#invitations" class="nav-link" data-i18n="navInvitations">
+            Покани
+          </a>
 
-                    <span class="brand-name">
-                        eMPe Studio
-                    </span>
+          <a href="#how-it-works" class="nav-link" data-i18n="navHow">
+            Како функционира
+          </a>
 
-                    <span class="brand-tagline">
-                        digital experience
-                    </span>
+          <a href="#packages" class="nav-link" data-i18n="navPackages">
+            Пакети
+          </a>
 
-                </div>
+          <a href="#faq" class="nav-link" data-i18n="navFaq"> ЧПП </a>
 
-            </a>
+          <a href="#contact" class="nav-link" data-i18n="navContact">
+            Контакт
+          </a>
+        </nav>
 
+        <!-- DESKTOP LANGUAGE SWITCHER -->
 
+        <div class="language-switcher desktop-language">
+          <button class="lang-btn active" data-lang="mk" aria-pressed="true">
+            MK
+          </button>
 
-            <!-- DESKTOP NAVIGATION -->
+          <span class="language-divider"> / </span>
 
-            <nav
-                class="desktop-nav"
-                aria-label="Главна навигација"
-            >
-
-                <a
-                    href="#home"
-                    class="nav-link active"
-                    data-i18n="navHome"
-                >
-                    Почетна
-                </a>
-
-
-                <a
-                    href="#about"
-                    class="nav-link"
-                    data-i18n="navAbout"
-                >
-                    За нас
-                </a>
-
-
-                <a
-                    href="#invitations"
-                    class="nav-link"
-                    data-i18n="navInvitations"
-                >
-                    Покани
-                </a>
-
-
-                <a
-                    href="#how-it-works"
-                    class="nav-link"
-                    data-i18n="navHow"
-                >
-                    Како функционира
-                </a>
-
-
-                <a
-                    href="#packages"
-                    class="nav-link"
-                    data-i18n="navPackages"
-                >
-                    Пакети
-                </a>
-
-
-                <a
-                    href="#faq"
-                    class="nav-link"
-                    data-i18n="navFaq"
-                >
-                    ЧПП
-                </a>
-
-
-                <a
-                    href="#contact"
-                    class="nav-link"
-                    data-i18n="navContact"
-                >
-                    Контакт
-                </a>
-
-            </nav>
-
-
-
-            <!-- DESKTOP LANGUAGE SWITCHER -->
-
-            <div class="language-switcher desktop-language">
-
-                <button
-                    class="lang-btn active"
-                    data-lang="mk"
-                    aria-pressed="true"
-                >
-                    MK
-                </button>
-
-                <span class="language-divider">
-                    /
-                </span>
-
-                <button
-                    class="lang-btn"
-                    data-lang="en"
-                    aria-pressed="false"
-                >
-                    EN
-                </button>
-
-            </div>
-
-
-
-            <!-- MOBILE HAMBURGER -->
-
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Отвори мени"
-                aria-expanded="false"
-            >
-
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </button>
-
+          <button class="lang-btn" data-lang="en" aria-pressed="false">
+            EN
+          </button>
         </div>
 
+        <!-- MOBILE HAMBURGER -->
 
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Отвори мени"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
 
-        <!-- ==================================================
+      <!-- ==================================================
              MOBILE MENU
         =================================================== -->
 
-        <div
-            class="mobile-menu"
-            id="mobileMenu"
-        >
+      <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-nav">
+          <a href="#home" data-i18n="navHome"> Почетна </a>
 
+          <a href="#about" data-i18n="navAbout"> За нас </a>
 
-            <nav class="mobile-nav">
+          <a href="#invitations" data-i18n="navInvitations"> Покани </a>
 
+          <a href="#how-it-works" data-i18n="navHow"> Како функционира </a>
 
-                <a
-                    href="#home"
-                    data-i18n="navHome"
-                >
-                    Почетна
-                </a>
+          <a href="#packages" data-i18n="navPackages"> Пакети </a>
 
+          <a href="#faq" data-i18n="navFaq"> ЧПП </a>
 
-                <a
-                    href="#about"
-                    data-i18n="navAbout"
-                >
-                    За нас
-                </a>
+          <a href="#contact" data-i18n="navContact"> Контакт </a>
+        </nav>
 
+        <!-- MOBILE LANGUAGE -->
 
-                <a
-                    href="#invitations"
-                    data-i18n="navInvitations"
-                >
-                    Покани
-                </a>
+        <div class="mobile-language-area">
+          <span class="mobile-language-label" data-i18n="languageLabel">
+            Јазик
+          </span>
 
+          <div class="language-switcher">
+            <button class="lang-btn active" data-lang="mk" aria-pressed="true">
+              MK
+            </button>
 
-                <a
-                    href="#how-it-works"
-                    data-i18n="navHow"
-                >
-                    Како функционира
-                </a>
+            <span class="language-divider"> / </span>
 
-
-                <a
-                    href="#packages"
-                    data-i18n="navPackages"
-                >
-                    Пакети
-                </a>
-
-
-                <a
-                    href="#faq"
-                    data-i18n="navFaq"
-                >
-                    ЧПП
-                </a>
-
-
-                <a
-                    href="#contact"
-                    data-i18n="navContact"
-                >
-                    Контакт
-                </a>
-
-            </nav>
-
-
-
-            <!-- MOBILE LANGUAGE -->
-
-            <div class="mobile-language-area">
-
-                <span
-                    class="mobile-language-label"
-                    data-i18n="languageLabel"
-                >
-                    Јазик
-                </span>
-
-
-                <div class="language-switcher">
-
-                    <button
-                        class="lang-btn active"
-                        data-lang="mk"
-                        aria-pressed="true"
-                    >
-                        MK
-                    </button>
-
-                    <span class="language-divider">
-                        /
-                    </span>
-
-                    <button
-                        class="lang-btn"
-                        data-lang="en"
-                        aria-pressed="false"
-                    >
-                        EN
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="mobile-menu-bottom">
-
-                <span>
-                    eMPe Studio
-                </span>
-
-                <small>
-                    digital experience ✦
-                </small>
-
-            </div>
-
+            <button class="lang-btn" data-lang="en" aria-pressed="false">
+              EN
+            </button>
+          </div>
         </div>
 
+        <div class="mobile-menu-bottom">
+          <span> eMPe Studio </span>
+
+          <small> digital experience ✦ </small>
+        </div>
+      </div>
     </header>
 
-
-
-
-
     <main>
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              01. HERO
         =================================================== -->
 
-        <section
-            class="hero"
-            id="home"
-        >
+      <section class="hero" id="home">
+        <!-- DECORATIVE BACKGROUND -->
 
+        <div class="hero-glow hero-glow-one"></div>
 
-            <!-- DECORATIVE BACKGROUND -->
+        <div class="hero-glow hero-glow-two"></div>
 
-            <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-decoration decoration-left">✦</div>
 
-            <div class="hero-glow hero-glow-two"></div>
-
-
-            <div class="hero-decoration decoration-left">
-                ✦
-            </div>
-
-
-
-            <div class="hero-container">
-
-
-                <!-- ==================================================
+        <div class="hero-container">
+          <!-- ==================================================
                      HERO TEXT
                 =================================================== -->
 
-                <div class="hero-copy">
+          <div class="hero-copy">
+            <div class="hero-eyebrow reveal">
+              <span></span>
 
+              <p data-i18n="heroEyebrow">Покани кои остануваат во спомен</p>
+            </div>
 
-                    <div class="hero-eyebrow reveal">
+            <h1 class="hero-title reveal reveal-delay-1">
+              <span data-i18n="heroTitleFirst"> Дигитални </span>
 
-                        <span></span>
+              <em data-i18n="heroTitleAccent"> покани </em>
 
-                        <p data-i18n="heroEyebrow">
-                            Покани кои остануваат во спомен
-                        </p>
+              <span data-i18n="heroTitleLast"> со стил. </span>
+            </h1>
 
-                    </div>
+            <p
+              class="hero-description reveal reveal-delay-2"
+              data-i18n="heroDescription"
+            >
+              Создаваме персонализирани дигитални покани за вашите најубави
+              моменти — со внимание, елеганција и чувство за секој детал.
+            </p>
 
+            <!-- HERO BUTTONS -->
 
+            <div class="hero-actions reveal reveal-delay-3">
+              <a href="#invitations" class="btn btn-primary">
+                <span data-i18n="heroViewInvitations"> Разгледај покани </span>
 
-                    <h1
-                        class="hero-title reveal reveal-delay-1"
-                    >
+                <span class="btn-arrow"> → </span>
+              </a>
 
-                        <span data-i18n="heroTitleFirst">
-                            Дигитални
-                        </span>
+              <a
+                href="#contact"
+                class="btn btn-outline"
+                data-i18n="heroRequestOffer"
+              >
+                Побарај понуда
+              </a>
+            </div>
 
-                        <em data-i18n="heroTitleAccent">
-                            покани
-                        </em>
+            <!-- HERO SMALL NOTE -->
 
-                        <span data-i18n="heroTitleLast">
-                            со стил.
-                        </span>
+            <div class="hero-note reveal reveal-delay-4">
+              <span class="hero-note-star"> ✦ </span>
 
-                    </h1>
+              <p data-i18n="heroNote">
+                Персонализирано. Дигитално. Создадено за вас.
+              </p>
+            </div>
+          </div>
 
-
-
-                    <p
-                        class="hero-description reveal reveal-delay-2"
-                        data-i18n="heroDescription"
-                    >
-                        Создаваме персонализирани дигитални покани
-                        за вашите најубави моменти — со внимание,
-                        елеганција и чувство за секој детал.
-                    </p>
-
-
-
-                    <!-- HERO BUTTONS -->
-
-                    <div
-                        class="hero-actions reveal reveal-delay-3"
-                    >
-
-
-                        <a
-                            href="#invitations"
-                            class="btn btn-primary"
-                        >
-
-                            <span data-i18n="heroViewInvitations">
-                                Разгледај покани
-                            </span>
-
-                            <span class="btn-arrow">
-                                →
-                            </span>
-
-                        </a>
-
-
-
-                        <a
-                            href="#contact"
-                            class="btn btn-outline"
-                            data-i18n="heroRequestOffer"
-                        >
-                            Побарај понуда
-                        </a>
-
-                    </div>
-
-
-
-                    <!-- HERO SMALL NOTE -->
-
-                    <div
-                        class="hero-note reveal reveal-delay-4"
-                    >
-
-                        <span class="hero-note-star">
-                            ✦
-                        </span>
-
-                        <p data-i18n="heroNote">
-                            Персонализирано. Дигитално. Создадено за вас.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-
-
-                <!-- ==================================================
+          <!-- ==================================================
                      HERO VISUAL
                 =================================================== -->
 
-                <div
-                    class="hero-visual reveal reveal-delay-2"
-                >
+          <div class="hero-visual reveal reveal-delay-2">
+            <!-- BACK INVITATION CARD -->
 
+            <div class="invitation-card-back">
+              <div class="invitation-monogram">eMP</div>
 
-                    <!-- BACK INVITATION CARD -->
+              <div class="botanical botanical-one">❧</div>
 
-                    <div class="invitation-card-back">
-
-                        <div class="invitation-monogram">
-                            eMP
-                        </div>
-
-                        <div class="botanical botanical-one">
-                            ❧
-                        </div>
-
-                        <div class="botanical botanical-two">
-                            ❧
-                        </div>
-
-                    </div>
-
-
-
-
-
-                    <!-- PHONE -->
-
-                    <div class="phone-wrapper">
-
-                        <div class="phone">
-
-
-                            <div class="phone-top">
-
-                                <div class="dynamic-island"></div>
-
-                            </div>
-
-
-
-                            <div class="phone-screen">
-
-
-                                <div class="phone-logo">
-                                    eMP
-                                </div>
-
-
-                                <p
-                                    class="invite-small"
-                                    data-i18n="inviteYou"
-                                >
-                                    ВЕ ПОКАНУВАМЕ
-                                </p>
-
-
-
-                                <!-- DEMO NAMES -->
-
-                                <h2>
-
-                                    Ана
-
-                                    <span>
-                                        &
-                                    </span>
-
-                                    Лука
-
-                                </h2>
-
-
-
-                                <div class="invite-divider">
-
-                                    <span></span>
-
-                                    ✦
-
-                                    <span></span>
-
-                                </div>
-
-
-
-                                <p class="invite-date">
-                                    25 · 06 · 2026
-                                </p>
-
-
-
-                                <p
-                                    class="invite-place"
-                                    data-i18n="inviteLocation"
-                                >
-                                    Скопје
-                                </p>
-
-
-
-                                <button
-                                    type="button"
-                                    class="invite-demo-btn"
-                                    data-i18n="openInvitation"
-                                >
-                                    Отвори покана
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-                    <!-- FLOATING CARD 1 -->
-
-                    <div
-                        class="floating-card floating-card-one"
-                    >
-
-                        <span class="floating-icon">
-                            ♡
-                        </span>
-
-
-                        <div>
-
-                            <strong data-i18n="floatingPersonalized">
-                                Персонализирано
-                            </strong>
-
-                            <small data-i18n="floatingPersonalizedSmall">
-                                само за вашиот момент
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-
-
-
-                    <!-- FLOATING CARD 2 -->
-
-                    <div
-                        class="floating-card floating-card-two"
-                    >
-
-                        <span class="floating-icon">
-                            ✦
-                        </span>
-
-
-                        <div>
-
-                            <strong>
-                                Digital experience
-                            </strong>
-
-                            <small data-i18n="floatingDigitalSmall">
-                                лесно за споделување
-                            </small>
-
-                        </div>
-
-                    </div>
-
-
-                </div>
-
+              <div class="botanical botanical-two">❧</div>
             </div>
 
+            <!-- PHONE -->
 
+            <div class="phone-wrapper">
+              <div class="phone">
+                <div class="phone-top">
+                  <div class="dynamic-island"></div>
+                </div>
 
+                <div class="phone-screen">
+                  <div class="phone-logo">eMP</div>
 
+                  <p class="invite-small" data-i18n="inviteYou">
+                    ВЕ ПОКАНУВАМЕ
+                  </p>
 
-            <!-- SCROLL INDICATOR -->
+                  <!-- DEMO NAMES -->
 
-            <a
-                href="#about"
-                class="scroll-indicator"
-            >
+                  <h2>
+                    Ана
 
-                <span>
-                    SCROLL
-                </span>
+                    <span> & </span>
 
-                <div class="scroll-line"></div>
+                    Лука
+                  </h2>
 
+                  <div class="invite-divider">
+                    <span></span>
+
+                    ✦
+
+                    <span></span>
+                  </div>
+
+                  <p class="invite-date">25 · 06 · 2026</p>
+
+                  <p class="invite-place" data-i18n="inviteLocation">Скопје</p>
+
+                  <button
+                    type="button"
+                    class="invite-demo-btn"
+                    data-i18n="openInvitation"
+                  >
+                    Отвори покана
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- FLOATING CARD 1 -->
+
+            <div class="floating-card floating-card-one">
+              <span class="floating-icon"> ♡ </span>
+
+              <div>
+                <strong data-i18n="floatingPersonalized">
+                  Персонализирано
+                </strong>
+
+                <small data-i18n="floatingPersonalizedSmall">
+                  само за вашиот момент
+                </small>
+              </div>
+            </div>
+
+            <!-- FLOATING CARD 2 -->
+
+            <div class="floating-card floating-card-two">
+              <span class="floating-icon"> ✦ </span>
+
+              <div>
+                <strong> Digital experience </strong>
+
+                <small data-i18n="floatingDigitalSmall">
+                  лесно за споделување
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SCROLL INDICATOR -->
+
+        <a href="#about" class="scroll-indicator">
+          <span> SCROLL </span>
+
+          <div class="scroll-line"></div>
+        </a>
+      </section>
+
+      <!-- ==================================================
+     02. ABOUT
+=================================================== -->
+
+      <section id="about" class="about-section section">
+        <div class="about-container">
+          <!-- LEFT SIDE -->
+
+          <div class="about-visual section-reveal">
+            <div class="about-card about-card-main">
+              <span class="about-card-small"> eMPe Studio </span>
+
+              <div class="about-monogram">eMP</div>
+
+              <span class="about-card-tagline"> digital experience </span>
+            </div>
+
+            <div class="about-card about-card-back">✦</div>
+
+            <div class="about-floating-note">
+              <span>♡</span>
+
+              <p data-i18n="aboutFloating">Создадено со чувство за детали.</p>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDE -->
+
+          <div class="about-content section-reveal">
+            <div class="section-eyebrow">
+              <span></span>
+
+              <p data-i18n="aboutEyebrow">За eMPe Studio</p>
+            </div>
+
+            <h2 class="section-title">
+              <span data-i18n="aboutTitleFirst"> Повеќе од </span>
+
+              <em data-i18n="aboutTitleAccent"> покана. </em>
+            </h2>
+
+            <p class="about-lead" data-i18n="aboutLead">
+              Веруваме дека секој посебен момент заслужува да започне на посебен
+              начин.
+            </p>
+
+            <p class="about-description" data-i18n="aboutDescription">
+              eMPe Studio создава персонализирани дигитални покани кои ги
+              спојуваат елеганцијата, деталите и современото дигитално искуство.
+            </p>
+
+            <p class="about-description" data-i18n="aboutDescriptionTwo">
+              Секоја покана е создадена за да ја пренесе атмосферата на вашиот
+              настан и лесно да стигне до луѓето со кои сакате да го споделите.
+            </p>
+
+            <div class="about-values">
+              <div class="about-value">
+                <span class="about-value-number"> 01 </span>
+
+                <div>
+                  <h3 data-i18n="aboutValueOneTitle">Лично</h3>
+
+                  <p data-i18n="aboutValueOneText">
+                    Дизајн создаден според вашиот момент.
+                  </p>
+                </div>
+              </div>
+
+              <div class="about-value">
+                <span class="about-value-number"> 02 </span>
+
+                <div>
+                  <h3 data-i18n="aboutValueTwoTitle">Елегантно</h3>
+
+                  <p data-i18n="aboutValueTwoText">
+                    Внимание до секој визуелен детал.
+                  </p>
+                </div>
+              </div>
+
+              <div class="about-value">
+                <span class="about-value-number"> 03 </span>
+
+                <div>
+                  <h3 data-i18n="aboutValueThreeTitle">Дигитално</h3>
+
+                  <p data-i18n="aboutValueThreeText">
+                    Современо и едноставно за споделување.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================================
+     03. INVITATIONS
+=================================================== -->
+
+      <section id="invitations" class="invitations-section section">
+        <div class="invitations-container">
+          <!-- SECTION HEADER -->
+
+          <div class="invitations-heading section-reveal">
+            <div class="section-eyebrow centered">
+              <span></span>
+
+              <p data-i18n="invitationsEyebrow">Нашите покани</p>
+
+              <span></span>
+            </div>
+
+            <h2 class="section-title centered-title">
+              <span data-i18n="invitationsTitleFirst"> Дизајн за секој </span>
+
+              <em data-i18n="invitationsTitleAccent"> посебен момент. </em>
+            </h2>
+
+            <p class="section-description" data-i18n="invitationsDescription">
+              Одберете го стилот што најдобро ја раскажува вашата приказна.
+              Секој дизајн може да биде персонализиран според вашиот настан.
+            </p>
+          </div>
+
+          <!-- CARDS -->
+
+          <div class="invitation-grid">
+            <!-- WEDDING -->
+
+            <article class="invitation-category-card section-reveal">
+              <div class="category-number">01</div>
+
+              <div class="category-icon">♡</div>
+
+              <h3 data-i18n="weddingTitle">Свадбени покани</h3>
+
+              <p data-i18n="weddingDescription">
+                Елегантни дигитални покани создадени за денот кој сакате да го
+                паметите засекогаш.
+              </p>
+
+              <a href="#collections" class="category-link">
+                <span data-i18n="viewCollection"> Разгледај колекција </span>
+
+                <span> → </span>
+              </a>
+            </article>
+
+            <!-- BIRTHDAY -->
+
+            <article class="invitation-category-card section-reveal">
+              <div class="category-number">02</div>
+
+              <div class="category-icon">✦</div>
+
+              <h3 data-i18n="birthdayTitle">Роденденски покани</h3>
+
+              <p data-i18n="birthdayDescription">
+                Модерни и персонализирани покани за прослави кои заслужуваат
+                посебен почеток.
+              </p>
+
+              <a href="#collections" class="category-link">
+                <span data-i18n="viewCollection"> Разгледај колекција </span>
+
+                <span> → </span>
+              </a>
+            </article>
+
+            <!-- CHRISTENING -->
+
+            <article class="invitation-category-card section-reveal">
+              <div class="category-number">03</div>
+
+              <div class="category-icon">❧</div>
+
+              <h3 data-i18n="christeningTitle">Крштевање</h3>
+
+              <p data-i18n="christeningDescription">
+                Нежни и внимателно дизајнирани покани за еден од најубавите
+                семејни моменти.
+              </p>
+
+              <a href="#collections" class="category-link">
+                <span data-i18n="viewCollection"> Разгледај колекција </span>
+
+                <span> → </span>
+              </a>
+            </article>
+
+            <!-- SPECIAL EVENTS -->
+
+            <article class="invitation-category-card section-reveal">
+              <div class="category-number">04</div>
+
+              <div class="category-icon">✧</div>
+
+              <h3 data-i18n="specialTitle">Посебни настани</h3>
+
+              <p data-i18n="specialDescription">
+                Веридби, годишнини, прослави и моменти кои сакате да ги најавите
+                на поинаков начин.
+              </p>
+
+              <a href="#collections" class="category-link">
+                <span data-i18n="viewCollection"> Разгледај колекција </span>
+
+                <span> → </span>
+              </a>
+            </article>
+          </div>
+
+          <!-- BOTTOM NOTE -->
+
+          <div class="invitations-bottom section-reveal">
+            <span> ✦ </span>
+
+            <p data-i18n="customInvitationText">
+              Имате поинаква замисла? Секогаш можеме да создадеме нешто
+              специјално само за вас.
+            </p>
+
+            <a href="#contact">
+              <span data-i18n="contactUs"> Контактирај нè </span>
+
+              →
             </a>
+          </div>
+        </div>
+      </section>
 
-        </section>
-
-
-
-
-
-        <!-- ==================================================
-             02. ABOUT
-             ЌЕ ГО ПРАВИМЕ СЛЕДНО
-        =================================================== -->
-
-        <section
-            id="about"
-            class="section"
-        >
-
-            <!-- About content ќе го додадеме следно -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
-             03. INVITATIONS
-        =================================================== -->
-
-        <section
-            id="invitations"
-            class="section"
-        >
-
-            <!-- Invitations content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              04. HOW IT WORKS
         =================================================== -->
 
-        <section
-            id="how-it-works"
-            class="section"
-        >
+      <section id="how-it-works" class="section">
+        <!-- How it works content -->
+      </section>
 
-            <!-- How it works content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              05. FEATURES
         =================================================== -->
 
-        <section
-            id="features"
-            class="section"
-        >
+      <section id="features" class="section">
+        <!-- Features content -->
+      </section>
 
-            <!-- Features content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              06. COLLECTIONS
         =================================================== -->
 
-        <section
-            id="collections"
-            class="section"
-        >
+      <section id="collections" class="section">
+        <!-- Collections content -->
+      </section>
 
-            <!-- Collections content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              07. PACKAGES
         =================================================== -->
 
-        <section
-            id="packages"
-            class="section"
-        >
+      <section id="packages" class="section">
+        <!-- Packages content -->
+      </section>
 
-            <!-- Packages content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              08. FAQ
         =================================================== -->
 
-        <section
-            id="faq"
-            class="section"
-        >
+      <section id="faq" class="section">
+        <!-- FAQ content -->
+      </section>
 
-            <!-- FAQ content -->
-
-        </section>
-
-
-
-
-
-        <!-- ==================================================
+      <!-- ==================================================
              09. CONTACT
         =================================================== -->
 
-        <section
-            id="contact"
-            class="section"
-        >
-
-            <!-- Contact content -->
-
-        </section>
-
-
+      <section id="contact" class="section">
+        <!-- Contact content -->
+      </section>
     </main>
-
-
-
-
 
     <!-- ==================================================
          FOOTER
     =================================================== -->
 
     <footer class="footer">
-
-        <!-- Footer content ќе го додадеме подоцна -->
-
+      <!-- Footer content ќе го додадеме подоцна -->
     </footer>
-
-
-
-
 
     <!-- JAVASCRIPT -->
 
     <script src="script.js"></script>
-
-
-</body>
-
+  </body>
 </html>
