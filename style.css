@@ -1,0 +1,2189 @@
+/* ==========================================================
+   eMPe STUDIO
+   HEADER + HERO + LANGUAGE SWITCHER
+========================================================== */
+
+
+/* ==========================================================
+   01. VARIABLES
+========================================================== */
+
+:root {
+    --cream: #f7f1e9;
+    --cream-light: #fdfaf6;
+    --cream-dark: #eee2d3;
+
+    --burgundy: #641d2b;
+    --burgundy-dark: #47131e;
+    --burgundy-soft: #82404b;
+
+    --coffee: #8f725d;
+    --gold: #b79a72;
+    --gold-light: #d7c3a5;
+
+    --text: #382b29;
+    --muted: #776967;
+
+    --white: #ffffff;
+
+    --container: 1240px;
+
+    --serif:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    --sans:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* ==========================================================
+   02. RESET
+========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: var(--sans);
+
+    background: var(--cream-light);
+    color: var(--text);
+
+    overflow-x: hidden;
+}
+
+
+body.menu-open {
+    overflow: hidden;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input,
+textarea {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* ==========================================================
+   03. BASIC SECTIONS
+========================================================== */
+
+.section {
+    width: 100%;
+}
+
+
+main {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   04. HEADER
+========================================================== */
+
+.site-header {
+    width: 100%;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1100;
+
+    transition:
+        background 0.35s ease,
+        box-shadow 0.35s ease,
+        backdrop-filter 0.35s ease;
+}
+
+
+.site-header.scrolled {
+    background: rgba(253, 250, 246, 0.96);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 10px 40px
+        rgba(67, 39, 32, 0.07);
+}
+
+
+/* ==========================================================
+   05. NAV CONTAINER
+========================================================== */
+
+.nav-container {
+    width: min(94%, var(--container));
+
+    min-height: 90px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+
+    position: relative;
+
+    z-index: 1102;
+}
+
+
+/* ==========================================================
+   06. BRAND
+========================================================== */
+
+.brand {
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    flex-shrink: 0;
+
+    position: relative;
+
+    z-index: 1103;
+}
+
+
+.brand-logo {
+    width: 52px;
+    height: 52px;
+
+    object-fit: contain;
+}
+
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1;
+}
+
+
+.brand-name {
+    font-family: var(--serif);
+
+    font-size: 24px;
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+
+    color: var(--burgundy);
+}
+
+
+.brand-tagline {
+    margin-top: 7px;
+
+    font-size: 7px;
+
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+
+    color: var(--gold);
+}
+
+
+/* ==========================================================
+   07. DESKTOP NAVIGATION
+========================================================== */
+
+.desktop-nav {
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.nav-link {
+    position: relative;
+
+    padding: 10px 0;
+
+    white-space: nowrap;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    color: var(--text);
+
+    transition:
+        color 0.3s ease;
+}
+
+
+.nav-link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--burgundy);
+
+    transform: translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--burgundy);
+}
+
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+
+/* ==========================================================
+   08. LANGUAGE SWITCHER
+========================================================== */
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+}
+
+
+.desktop-language {
+    flex-shrink: 0;
+
+    margin-left: 5px;
+
+    padding-left: 18px;
+
+    border-left:
+        1px solid
+        rgba(100, 29, 43, 0.14);
+}
+
+
+.lang-btn {
+    padding: 4px 2px;
+
+    border: 0;
+
+    background: transparent;
+
+    position: relative;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+
+    color: var(--muted);
+
+    transition:
+        color 0.3s ease,
+        opacity 0.3s ease;
+}
+
+
+.lang-btn::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: -4px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--burgundy);
+
+    transform: translateX(-50%);
+
+    transition:
+        width 0.3s ease;
+}
+
+
+.lang-btn:hover {
+    color: var(--burgundy);
+}
+
+
+.lang-btn.active {
+    color: var(--burgundy);
+}
+
+
+.lang-btn.active::after {
+    width: 100%;
+}
+
+
+.language-divider {
+    font-family: var(--serif);
+
+    font-size: 13px;
+
+    color:
+        rgba(183, 154, 114, 0.75);
+}
+
+
+/* ==========================================================
+   09. HAMBURGER BUTTON
+========================================================== */
+
+.menu-toggle {
+    display: none;
+
+    width: 44px;
+    height: 44px;
+
+    padding: 0;
+
+    margin-left: auto;
+
+    border: 0;
+
+    background: transparent;
+
+    position: relative;
+
+    z-index: 1110;
+}
+
+
+.menu-toggle span {
+    display: block;
+
+    width: 27px;
+    height: 1.5px;
+
+    margin: 6px auto;
+
+    border-radius: 10px;
+
+    background: var(--burgundy);
+
+    transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+}
+
+
+/* Hamburger -> X */
+
+.menu-toggle.active span:nth-child(1) {
+    transform:
+        translateY(7.5px)
+        rotate(45deg);
+}
+
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+
+.menu-toggle.active span:nth-child(3) {
+    transform:
+        translateY(-7.5px)
+        rotate(-45deg);
+}
+
+
+/* ==========================================================
+   10. MOBILE FULL-SCREEN MENU
+========================================================== */
+
+.mobile-menu {
+    width: 100%;
+    height: 100dvh;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 1090;
+
+    padding:
+        115px
+        8%
+        38px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--cream-light);
+
+    overflow-y: auto;
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(-16px);
+
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease,
+        transform 0.35s ease;
+}
+
+
+.mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* ==========================================================
+   11. MOBILE NAVIGATION
+========================================================== */
+
+.mobile-nav {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.mobile-nav a {
+    width: 100%;
+
+    min-height: 61px;
+
+    padding: 15px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        rgba(100, 29, 43, 0.11);
+
+    font-family: var(--serif);
+
+    font-size: 27px;
+    font-weight: 400;
+
+    line-height: 1.15;
+
+    color: var(--burgundy-dark);
+
+    transition:
+        color 0.3s ease,
+        padding-left 0.3s ease;
+}
+
+
+.mobile-nav a:first-child {
+    border-top:
+        1px solid
+        rgba(100, 29, 43, 0.11);
+}
+
+
+.mobile-nav a::after {
+    content: "→";
+
+    margin-left: 20px;
+
+    flex-shrink: 0;
+
+    font-family: var(--sans);
+
+    font-size: 16px;
+
+    color: var(--gold);
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.mobile-nav a:hover {
+    padding-left: 6px;
+
+    color: var(--burgundy);
+}
+
+
+.mobile-nav a:hover::after {
+    transform: translateX(5px);
+}
+
+
+/* ==========================================================
+   12. MOBILE LANGUAGE AREA
+========================================================== */
+
+.mobile-language-area {
+    margin-top: 31px;
+
+    padding:
+        22px 0
+        20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom:
+        1px solid
+        rgba(100, 29, 43, 0.11);
+}
+
+
+.mobile-language-label {
+    font-family: var(--serif);
+
+    font-size: 15px;
+
+    color: var(--coffee);
+}
+
+
+.mobile-language-area .language-switcher {
+    gap: 11px;
+}
+
+
+.mobile-language-area .lang-btn {
+    font-size: 12px;
+}
+
+
+.mobile-language-area .language-divider {
+    font-size: 15px;
+}
+
+
+/* ==========================================================
+   13. MOBILE MENU BOTTOM
+========================================================== */
+
+.mobile-menu-bottom {
+    margin-top: auto;
+    padding-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.mobile-menu-bottom span {
+    font-family: var(--serif);
+
+    font-size: 19px;
+
+    color: var(--burgundy);
+}
+
+
+.mobile-menu-bottom small {
+    font-size: 7px;
+
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+
+    color: var(--gold);
+}
+
+
+/* ==========================================================
+   14. HERO
+========================================================== */
+
+.hero {
+    min-height: 100vh;
+
+    padding:
+        150px 0
+        80px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            #fdfaf6 0%,
+            #faf4ec 58%,
+            #f4e8db 100%
+        );
+}
+
+
+.hero-container {
+    width: min(90%, var(--container));
+
+    min-height: calc(100vh - 230px);
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        0.88fr
+        1.12fr;
+
+    align-items: center;
+
+    gap: 65px;
+
+    position: relative;
+
+    z-index: 4;
+}
+
+
+/* ==========================================================
+   15. HERO COPY
+========================================================== */
+
+.hero-copy {
+    max-width: 570px;
+}
+
+
+.hero-eyebrow {
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.19em;
+
+    text-transform: uppercase;
+
+    color: var(--coffee);
+}
+
+
+.hero-eyebrow p {
+    margin: 0;
+}
+
+
+.hero-eyebrow span {
+    width: 45px;
+    height: 1px;
+
+    flex-shrink: 0;
+
+    background: var(--gold);
+}
+
+
+/* ==========================================================
+   16. HERO TITLE
+========================================================== */
+
+.hero-title {
+    max-width: 600px;
+
+    display: block;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            62px,
+            6.3vw,
+            94px
+        );
+
+    line-height: 0.96;
+
+    font-weight: 400;
+
+    letter-spacing: -0.035em;
+
+    color: var(--burgundy-dark);
+}
+
+
+.hero-title > span,
+.hero-title > em {
+    display: block;
+}
+
+
+.hero-title em {
+    width: fit-content;
+
+    position: relative;
+
+    z-index: 1;
+
+    font-weight: 400;
+    font-style: italic;
+
+    color: var(--burgundy);
+}
+
+
+.hero-title em::after {
+    content: "";
+
+    width: 82%;
+    height: 7px;
+
+    position: absolute;
+
+    left: 9%;
+    bottom: 5px;
+
+    z-index: -1;
+
+    background:
+        rgba(183, 154, 114, 0.24);
+}
+
+
+/* ==========================================================
+   17. HERO DESCRIPTION
+========================================================== */
+
+.hero-description {
+    max-width: 520px;
+
+    margin-top: 34px;
+
+    font-size: 16px;
+    line-height: 1.85;
+
+    color: var(--muted);
+}
+
+
+/* ==========================================================
+   18. HERO BUTTONS
+========================================================== */
+
+.hero-actions {
+    margin-top: 37px;
+
+    display: flex;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 13px;
+}
+
+
+.btn {
+    min-height: 53px;
+
+    padding: 0 27px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 22px;
+
+    border:
+        1px solid
+        transparent;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 0.02em;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.btn-primary {
+    color: var(--white);
+
+    background: var(--burgundy);
+}
+
+
+.btn-primary:hover {
+    background: var(--burgundy-dark);
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(100, 29, 43, 0.18);
+}
+
+
+.btn-arrow {
+    font-size: 18px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+.btn-primary:hover .btn-arrow {
+    transform: translateX(5px);
+}
+
+
+.btn-outline {
+    color: var(--burgundy);
+
+    border-color:
+        rgba(100, 29, 43, 0.33);
+
+    background:
+        rgba(255, 255, 255, 0.23);
+}
+
+
+.btn-outline:hover {
+    color: var(--white);
+
+    border-color: var(--burgundy);
+
+    background: var(--burgundy);
+
+    transform: translateY(-3px);
+}
+
+
+/* ==========================================================
+   19. HERO NOTE
+========================================================== */
+
+.hero-note {
+    margin-top: 31px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    font-family: var(--serif);
+
+    font-size: 13px;
+
+    letter-spacing: 0.02em;
+
+    color: var(--coffee);
+}
+
+
+.hero-note-star {
+    flex-shrink: 0;
+
+    color: var(--gold);
+}
+
+
+/* ==========================================================
+   20. HERO VISUAL
+========================================================== */
+
+.hero-visual {
+    min-height: 610px;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* ==========================================================
+   21. BACK INVITATION CARD
+========================================================== */
+
+.invitation-card-back {
+    width: 390px;
+    height: 500px;
+
+    position: absolute;
+
+    right: 30px;
+    top: 40px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(183, 154, 114, 0.32);
+
+    background: #f9f2e9;
+
+    transform: rotate(8deg);
+
+    box-shadow:
+        0 30px 80px
+        rgba(73, 47, 34, 0.08);
+}
+
+
+.invitation-monogram {
+    margin-top: 70px;
+
+    text-align: center;
+
+    font-family: var(--serif);
+
+    font-size: 67px;
+
+    color:
+        rgba(183, 154, 114, 0.66);
+}
+
+
+.botanical {
+    position: absolute;
+
+    font-family: var(--serif);
+
+    font-size: 130px;
+
+    color:
+        rgba(183, 154, 114, 0.24);
+}
+
+
+.botanical-one {
+    left: -30px;
+    bottom: 20px;
+
+    transform:
+        rotate(-25deg);
+}
+
+
+.botanical-two {
+    top: 5px;
+    right: -35px;
+
+    transform:
+        rotate(150deg);
+}
+
+
+/* ==========================================================
+   22. PHONE WRAPPER
+========================================================== */
+
+.phone-wrapper {
+    position: relative;
+
+    z-index: 5;
+
+    animation:
+        phoneFloat
+        5s ease-in-out
+        infinite;
+}
+
+
+/* ==========================================================
+   23. PHONE
+========================================================== */
+
+.phone {
+    width: 286px;
+    height: 575px;
+
+    padding: 9px;
+
+    position: relative;
+
+    border:
+        4px solid
+        #211c1b;
+
+    border-radius: 42px;
+
+    background: #151212;
+
+    transform:
+        rotate(-5deg);
+
+    box-shadow:
+        0 45px 80px
+        rgba(58, 37, 31, 0.22);
+}
+
+
+.phone-top {
+    width: 100%;
+
+    position: absolute;
+
+    top: 15px;
+    left: 0;
+
+    z-index: 3;
+
+    display: flex;
+    justify-content: center;
+}
+
+
+.dynamic-island {
+    width: 90px;
+    height: 25px;
+
+    border-radius: 20px;
+
+    background: #111;
+}
+
+
+/* ==========================================================
+   24. PHONE SCREEN
+========================================================== */
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+
+    padding: 30px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            160deg,
+            #faf3ea,
+            #fffdf9
+        );
+}
+
+
+.phone-screen::before {
+    content: "❧";
+
+    position: absolute;
+
+    top: 50px;
+    left: -25px;
+
+    font-size: 100px;
+
+    color:
+        rgba(183, 154, 114, 0.17);
+
+    transform:
+        rotate(-20deg);
+}
+
+
+.phone-screen::after {
+    content: "❧";
+
+    position: absolute;
+
+    right: -25px;
+    bottom: 30px;
+
+    font-size: 100px;
+
+    color:
+        rgba(183, 154, 114, 0.17);
+
+    transform:
+        rotate(155deg);
+}
+
+
+/* ==========================================================
+   25. PHONE CONTENT
+========================================================== */
+
+.phone-logo {
+    margin-bottom: 22px;
+
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 38px;
+
+    color: var(--gold);
+}
+
+
+.invite-small {
+    margin-bottom: 17px;
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 8px;
+
+    letter-spacing: 0.26em;
+
+    color: var(--coffee);
+}
+
+
+.phone-screen h2 {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+
+    font-family: var(--serif);
+
+    font-size: 33px;
+    font-weight: 400;
+
+    line-height: 1.1;
+
+    color: var(--burgundy-dark);
+}
+
+
+.phone-screen h2 span {
+    margin: 5px 0;
+
+    font-size: 18px;
+
+    color: var(--gold);
+}
+
+
+.invite-divider {
+    width: 115px;
+
+    margin:
+        24px 0
+        16px;
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--gold);
+}
+
+
+.invite-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background:
+        rgba(183, 154, 114, 0.52);
+}
+
+
+.invite-date {
+    position: relative;
+
+    z-index: 2;
+
+    font-family: var(--serif);
+
+    font-size: 16px;
+
+    letter-spacing: 0.08em;
+
+    color: var(--burgundy);
+}
+
+
+.invite-place {
+    margin-top: 9px;
+
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 10px;
+
+    color: var(--coffee);
+}
+
+
+.invite-demo-btn {
+    margin-top: 29px;
+
+    padding:
+        12px
+        18px;
+
+    position: relative;
+
+    z-index: 2;
+
+    border: 0;
+
+    font-size: 10px;
+
+    color: var(--white);
+
+    background: var(--burgundy);
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease;
+}
+
+
+.invite-demo-btn:hover {
+    background: var(--burgundy-dark);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ==========================================================
+   26. FLOATING CARDS
+========================================================== */
+
+.floating-card {
+    position: absolute;
+
+    z-index: 6;
+
+    padding:
+        15px
+        18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    border:
+        1px solid
+        rgba(183, 154, 114, 0.24);
+
+    background:
+        rgba(255, 253, 249, 0.96);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(75, 47, 39, 0.10);
+}
+
+
+.floating-card strong,
+.floating-card small {
+    display: block;
+}
+
+
+.floating-card strong {
+    margin-bottom: 4px;
+
+    font-family: var(--serif);
+
+    font-size: 14px;
+    font-weight: 400;
+
+    color: var(--burgundy);
+}
+
+
+.floating-card small {
+    font-size: 9px;
+
+    color: var(--muted);
+}
+
+
+.floating-icon {
+    flex-shrink: 0;
+
+    color: var(--gold);
+}
+
+
+.floating-card-one {
+    top: 110px;
+    left: -5px;
+
+    animation:
+        floatingCard
+        5s ease-in-out
+        infinite;
+}
+
+
+.floating-card-two {
+    right: 0;
+    bottom: 100px;
+
+    animation:
+        floatingCard
+        6s ease-in-out
+        infinite reverse;
+}
+
+
+/* ==========================================================
+   27. HERO BACKGROUND DECORATION
+========================================================== */
+
+.hero-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+.hero-glow-one {
+    width: 600px;
+    height: 600px;
+
+    right: -160px;
+    top: -180px;
+
+    background:
+        rgba(183, 154, 114, 0.07);
+}
+
+
+.hero-glow-two {
+    width: 450px;
+    height: 450px;
+
+    left: -230px;
+    bottom: -180px;
+
+    background:
+        rgba(100, 29, 43, 0.025);
+}
+
+
+.hero-decoration {
+    position: absolute;
+
+    font-size: 24px;
+
+    color:
+        rgba(183, 154, 114, 0.38);
+}
+
+
+.decoration-left {
+    top: 28%;
+    left: 3%;
+}
+
+
+/* ==========================================================
+   28. SCROLL INDICATOR
+========================================================== */
+
+.scroll-indicator {
+    position: absolute;
+
+    left: 50%;
+    bottom: 23px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--coffee);
+}
+
+
+.scroll-indicator span {
+    font-size: 8px;
+
+    letter-spacing: 0.30em;
+}
+
+
+.scroll-line {
+    width: 1px;
+    height: 33px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            var(--gold),
+            transparent
+        );
+
+    animation:
+        scrollLine
+        1.7s ease-in-out
+        infinite;
+}
+
+
+/* ==========================================================
+   29. ENTRY ANIMATIONS
+========================================================== */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(25px);
+
+    animation:
+        revealUp
+        0.9s ease
+        forwards;
+}
+
+
+.reveal-delay-1 {
+    animation-delay: 0.12s;
+}
+
+
+.reveal-delay-2 {
+    animation-delay: 0.26s;
+}
+
+
+.reveal-delay-3 {
+    animation-delay: 0.40s;
+}
+
+
+.reveal-delay-4 {
+    animation-delay: 0.55s;
+}
+
+
+/* ==========================================================
+   30. KEYFRAMES
+========================================================== */
+
+@keyframes revealUp {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes phoneFloat {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-13px);
+    }
+}
+
+
+@keyframes floatingCard {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+}
+
+
+@keyframes scrollLine {
+
+    0%,
+    100% {
+        opacity: 0.3;
+
+        transform:
+            scaleY(0.7);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform:
+            scaleY(1);
+    }
+}
+
+
+/* ==========================================================
+   31. MEDIUM DESKTOP / SMALL LAPTOP
+========================================================== */
+
+@media (max-width: 1180px) {
+
+    .nav-container {
+        gap: 19px;
+    }
+
+
+    .desktop-nav {
+        gap: 17px;
+    }
+
+
+    .nav-link {
+        font-size: 11px;
+    }
+
+
+    .desktop-language {
+        padding-left: 12px;
+    }
+
+
+    .brand-name {
+        font-size: 22px;
+    }
+
+
+    .hero-container {
+        gap: 30px;
+    }
+
+
+    .hero-visual {
+        transform:
+            scale(0.93);
+    }
+}
+
+
+/* ==========================================================
+   32. TABLET NAVIGATION BREAKPOINT
+========================================================== */
+
+@media (max-width: 960px) {
+
+    .desktop-nav,
+    .desktop-language {
+        display: none;
+    }
+
+
+    .menu-toggle {
+        display: block;
+    }
+
+
+    .site-header {
+        background:
+            rgba(253, 250, 246, 0.96);
+
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+
+        box-shadow:
+            0 5px 25px
+            rgba(67, 39, 32, 0.045);
+    }
+
+
+    .nav-container {
+        width: 90%;
+
+        min-height: 78px;
+    }
+}
+
+
+/* ==========================================================
+   33. TABLET HERO
+========================================================== */
+
+@media (max-width: 850px) {
+
+    .brand-logo {
+        width: 43px;
+        height: 43px;
+    }
+
+
+    .brand-name {
+        font-size: 21px;
+    }
+
+
+    .brand-tagline {
+        margin-top: 5px;
+
+        font-size: 6px;
+    }
+
+
+    /* MOBILE MENU */
+
+    .mobile-menu {
+        padding:
+            105px
+            7%
+            35px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: auto;
+
+        padding:
+            125px
+            0
+            70px;
+    }
+
+
+    .hero-container {
+        width: 88%;
+
+        min-height: auto;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: 55px;
+    }
+
+
+    .hero-copy {
+        width: 100%;
+        max-width: none;
+
+        text-align: center;
+    }
+
+
+    .hero-eyebrow {
+        justify-content: center;
+
+        font-size: 8px;
+    }
+
+
+    .hero-title {
+        max-width: none;
+
+        font-size:
+            clamp(
+                54px,
+                15vw,
+                78px
+            );
+
+        line-height: 0.99;
+    }
+
+
+    .hero-title em {
+        margin:
+            0 auto;
+    }
+
+
+    .hero-description {
+        max-width: 520px;
+
+        margin:
+            27px auto
+            0;
+
+        font-size: 15px;
+
+        line-height: 1.75;
+    }
+
+
+    .hero-actions {
+        justify-content: center;
+
+        margin-top: 30px;
+    }
+
+
+    .hero-note {
+        justify-content: center;
+
+        font-size: 12px;
+    }
+
+
+    /* VISUAL */
+
+    .hero-visual {
+        width: 100%;
+
+        min-height: 520px;
+
+        transform: none;
+    }
+
+
+    .invitation-card-back {
+        width: 290px;
+        height: 390px;
+
+        top: 45px;
+        right: 50%;
+
+        transform:
+            translateX(62%)
+            rotate(8deg);
+    }
+
+
+    .phone {
+        width: 232px;
+        height: 470px;
+
+        border-radius: 35px;
+    }
+
+
+    .phone-screen {
+        border-radius: 26px;
+    }
+
+
+    .dynamic-island {
+        width: 70px;
+        height: 20px;
+    }
+
+
+    .phone-screen h2 {
+        font-size: 27px;
+    }
+
+
+    .floating-card {
+        padding:
+            12px
+            14px;
+    }
+
+
+    .floating-card-one {
+        left: -12px;
+        top: 80px;
+    }
+
+
+    .floating-card-two {
+        right: -10px;
+        bottom: 45px;
+    }
+
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+
+/* ==========================================================
+   34. MOBILE
+========================================================== */
+
+@media (max-width: 520px) {
+
+    /* HEADER */
+
+    .nav-container {
+        width: 91%;
+
+        min-height: 72px;
+    }
+
+
+    .brand-logo {
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .brand-text {
+        display: none;
+    }
+
+
+    /* MOBILE MENU */
+
+    .mobile-menu {
+        padding:
+            94px
+            7%
+            27px;
+    }
+
+
+    .mobile-nav a {
+        min-height: 54px;
+
+        padding: 12px 0;
+
+        font-size: 23px;
+    }
+
+
+    .mobile-nav a::after {
+        font-size: 14px;
+    }
+
+
+    .mobile-language-area {
+        margin-top: 25px;
+
+        padding:
+            18px 0;
+    }
+
+
+    .mobile-menu-bottom {
+        padding-top: 25px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        padding:
+            103px
+            0
+            58px;
+    }
+
+
+    .hero-container {
+        width: 91%;
+
+        gap: 43px;
+    }
+
+
+    .hero-eyebrow {
+        gap: 9px;
+
+        margin-bottom: 19px;
+
+        font-size: 7px;
+
+        letter-spacing: 0.15em;
+    }
+
+
+    .hero-eyebrow span {
+        width: 24px;
+    }
+
+
+    .hero-title {
+        font-size: 52px;
+
+        line-height: 1;
+    }
+
+
+    .hero-description {
+        margin-top: 23px;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-actions {
+        width: 100%;
+
+        margin-top: 27px;
+
+        flex-direction: column;
+
+        gap: 11px;
+    }
+
+
+    .btn {
+        width: 100%;
+
+        min-height: 52px;
+    }
+
+
+    .hero-note {
+        margin-top: 25px;
+
+        font-size: 11px;
+    }
+
+
+    /* VISUAL */
+
+    .hero-visual {
+        min-height: 470px;
+
+        margin-top: 5px;
+    }
+
+
+    .phone {
+        width: 208px;
+        height: 420px;
+
+        border-radius: 31px;
+    }
+
+
+    .phone-screen {
+        padding: 25px;
+
+        border-radius: 23px;
+    }
+
+
+    .phone-logo {
+        margin-bottom: 16px;
+
+        font-size: 31px;
+    }
+
+
+    .phone-screen h2 {
+        font-size: 24px;
+    }
+
+
+    .invite-divider {
+        margin:
+            18px 0
+            14px;
+    }
+
+
+    .invite-demo-btn {
+        margin-top: 23px;
+    }
+
+
+    .invitation-card-back {
+        width: 250px;
+        height: 340px;
+    }
+
+
+    .floating-card {
+        padding:
+            10px
+            11px;
+    }
+
+
+    .floating-card strong {
+        font-size: 11px;
+    }
+
+
+    .floating-card small {
+        font-size: 7px;
+    }
+
+
+    .floating-card-one {
+        left: -22px;
+        top: 68px;
+    }
+
+
+    .floating-card-two {
+        right: -24px;
+        bottom: 35px;
+    }
+}
+
+
+/* ==========================================================
+   35. VERY SMALL MOBILE
+========================================================== */
+
+@media (max-width: 380px) {
+
+    .mobile-nav a {
+        min-height: 48px;
+
+        padding: 10px 0;
+
+        font-size: 20px;
+    }
+
+
+    .mobile-language-area {
+        margin-top: 18px;
+    }
+
+
+    .hero-title {
+        font-size: 46px;
+    }
+
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+
+    .hero-visual {
+        margin-top: -12px;
+
+        transform:
+            scale(0.92);
+    }
+}
+
+
+/* ==========================================================
+   36. REDUCED MOTION
+========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+
+    *,
+    *::before,
+    *::after {
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+    }
+}
